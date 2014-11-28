@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[SimpleAVAudioPlayer playProgress:]:SimpleAVAudioPlayer.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[artword objectForKey:@&quot;picturetype&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "[piDict allKeys]">
+            </PersistentString>
+            <PersistentString
+               value = "[artword allKeys]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SimpleAVAudioPlayer configNowPlayingInfoCenter]:SimpleAVAudioPlayer.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AudioAppDelegate application:didFinishLaunchingWithOptions:]:AudioAppDelegate.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[SimpleAVAudioPlayer getAudioInfoByUrl:]:SimpleAVAudioPlayer.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[mp3Asset metadataForFormat:@&quot;org.id3&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
