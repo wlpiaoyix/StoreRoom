@@ -10,10 +10,10 @@
 #import "ZipArchive.h"
 #import "UIImage+Convenience.h"
 #import "UIViewDraw.h"
-#import "ColorMatrix.h"
 #import "GDataXMLNode.h"
 #import "GDataXMLElement+expanded.h"
 #import "NetWorkDownLoad.h"
+#import "SimplePikerView.h"
 
 @implementation CommonAppDelegate
 
@@ -50,65 +50,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    UIViewDraw *v = [UIViewDraw new];
-    v.frame = self.window.frame;
-    [self.window addSubview:v];
+    SimplePikerView *p = [SimplePikerView new];
+    CGRect r = p.frame;
+    r.size.width = 100;
+    r.size.height = 300;
+    p.frame = r;
     
-    NetWorkDownLoad *n = [NetWorkDownLoad new];
-    n.downLoadString = @"http://yinyueshiting.baidu.com/data2/music/123297915/1201250291413518461128.mp3?xcode=ca8584c01dc8c2ce22828897c3b293b7a6a03c85c06f4409";
-    [n resumeDownLoad];
-    
-    NSString *zippath = [[NSBundle mainBundle] pathForResource:@"3715" ofType:@"zip"];
-    
-    NSString *xml1 = [[NSBundle mainBundle] pathForResource:@"dict1" ofType:@"xml"];
-    NSString *xml2 = [[NSBundle mainBundle] pathForResource:@"dict2" ofType:@"xml"];
-    ZipArchive *zip = [ZipArchive new];
-    
-    [zip createZipFile:zippath append:2];
-    [zip addFileToZip:xml2 newname:@"1.1/tgg.xml"];
-//    [zip addFileToZip:@"" newname:@"1.1/5.xml"];
-//    [zip addFileToZip:xml1 newname:@"testzip2.xml"];
-    [zip closeZipFile];
-//    double time = [[NSDate date] timeIntervalSince1970];
-//    NSArray *arraypath = [zip getAllUnzipPath];
-//    NSLog(@"%f",[[NSDate date] timeIntervalSince1970]-time);
-//    [Common fileExistsAtPath:[NSString stringWithFormat:@"%@/mp3",[Common getDocumentDir]] IsDir:YES IsCreated:YES];
-//    
-//    time = [[NSDate date] timeIntervalSince1970];
-//    NSData *data = [zip getUnzipFile:[arraypath lastObject]];
-//    NSLog(@"%f",(long)[[NSDate date] timeIntervalSince1970]-time);
-//    NSString *path = [NSString stringWithFormat:@"%@/%@",[Common getDocumentDir],[arraypath lastObject]];
-//    [data writeToFile:path atomically:YES];
-//    time = [[NSDate date] timeIntervalSince1970];
-//    data = [zip getUnzipFile:[arraypath objectAtIndex:[arraypath count]-4]];
-//    NSLog(@"%f",(long)[[NSDate date] timeIntervalSince1970]-time);
-//    path = [NSString stringWithFormat:@"%@/%@",[Common getDocumentDir],[arraypath objectAtIndex:[arraypath count]-4]];
-//    [data writeToFile:path atomically:YES];
-//    
-//    time = [[NSDate date] timeIntervalSince1970];
-//    data = [zip getUnzipFile:[arraypath objectAtIndex:[arraypath count]-3]];
-//    NSLog(@"%f",(long)[[NSDate date] timeIntervalSince1970]-time);
-//    path = [NSString stringWithFormat:@"%@/%@",[Common getDocumentDir],[arraypath objectAtIndex:[arraypath count]-3]];
-//    [data writeToFile:path atomically:YES];
-//    [zip closeUnzipFile];
-    //获取工程目录的xml文件
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"dict" ofType:@"xml"];
-    NSData *xmlData = [[NSData alloc] initWithContentsOfFile:filePath];
-    filePath = [[NSBundle mainBundle] pathForResource:@"dict2" ofType:@"xml"];
-    NSData *xmlData2 = [[NSData alloc] initWithContentsOfFile:filePath];
-    [CommonAppDelegate mergeXMLDocument:xmlData TagetXML:xmlData2];
-    UIFont *f = [UIFont systemFontOfSize:18];
-    CGFontRef customFont = CGFontCreateWithFontName((CFStringRef)(f.fontName));
-    CGRect bbox = CGFontGetFontBBox(customFont);           // return a box that can contain any char with this font
-    int units = CGFontGetUnitsPerEm(customFont);           // return how many glyph unit represent a system device unit
-    CGFontRelease(customFont);
-    CGFloat height = (((float)bbox.size.height)/((float)units))*12;
-//    ZipArchive *zip = [ZipArchive new];
-//    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
-//    path = [NSBundle pathForResource:@"Tests" ofType:@"zip"  inDirectory:path];
-//    [zip UnzipOpenFile:path];
-//    NSData *data = [zip getUnzipFile:path FilePath:@"CommonTests/CommonTests.m"];
-//    [data writeToFile:[NSString stringWithFormat:@"%@/adfasd.m",NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject] atomically:YES];
+    [self.window addSubview:p];
     return YES;
 }
 

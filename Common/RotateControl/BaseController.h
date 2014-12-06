@@ -16,7 +16,7 @@ typedef void (^CallBackKeyboardStart)(void);
 typedef void (^CallBackKeyboardEnd)(CGRect keyBoardFrame);
 
 @interface BaseController : UIViewController<MBProgressHUDDelegate,ProtocolNavigationController>{
-@private
+@protected
     CallBackKeyboardStart  showStart;
     CallBackKeyboardStart hiddenStart;
     CallBackKeyboardEnd  showEnd;

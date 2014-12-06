@@ -10,29 +10,41 @@
 	<string>StoreRoom</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DA6370B1A3A39BC3E464746B5FA3157D99EB71B1</key>
+		<key>0EAF38B5B1D9E56A87BCD8A141224F2C8BE7141F</key>
 		<string>https://github.com/wlpiaoyix/StoreRoom.git</string>
+		<key>AAD726981F2C72160A1BB0DF7A3E669896E72E46</key>
+		<string>https://github.com/wlpiaoyix/ShiShang.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>StoreRoom.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DA6370B1A3A39BC3E464746B5FA3157D99EB71B1</key>
+		<key>0EAF38B5B1D9E56A87BCD8A141224F2C8BE7141F</key>
 		<string>..</string>
+		<key>AAD726981F2C72160A1BB0DF7A3E669896E72E46</key>
+		<string>../ShiShang</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/wlpiaoyix/StoreRoom.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DA6370B1A3A39BC3E464746B5FA3157D99EB71B1</string>
+	<string>0EAF38B5B1D9E56A87BCD8A141224F2C8BE7141F</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DA6370B1A3A39BC3E464746B5FA3157D99EB71B1</string>
+			<string>AAD726981F2C72160A1BB0DF7A3E669896E72E46</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ShiShang</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0EAF38B5B1D9E56A87BCD8A141224F2C8BE7141F</string>
 			<key>IDESourceControlWCCName</key>
 			<string>StoreRoom</string>
 		</dict>

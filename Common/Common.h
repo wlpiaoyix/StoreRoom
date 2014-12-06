@@ -10,6 +10,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
+#import "ConfigManage.h"
 #import "Macroroutine.h"
 #import "NetWork.h"
 #import "NSDate+convenience.h"

@@ -8,11 +8,11 @@
 
 #import "PopUpBasisView.h"
 #import "Common.h"
-
+@protocol PopUpDialogViewDelegate;
 
 @interface PopUpDialogView:PopUpBasisView
-+(PopUpDialogView*) initWithTitle:(NSString *)title message:(NSString *)message delegate:(id/*<PopUpDialogViewDelegate>*/)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
-+(PopUpDialogView*) initWithTitle:(NSString *)title message:(NSString *)message TargetView:(UIView*) targetView delegate:(id/*<PopUpDialogViewDelegate>*/)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
++(PopUpDialogView*) initWithTitle:(NSString *)title message:(NSString *)message delegate:(id<PopUpDialogViewDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
++(PopUpDialogView*) initWithTitle:(NSString *)title message:(NSString *)message TargetView:(UIView*) targetView delegate:(id<PopUpDialogViewDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
 @end
 @protocol PopUpDialogViewDelegate <NSObject>
 @required

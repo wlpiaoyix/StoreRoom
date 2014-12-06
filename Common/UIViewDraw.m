@@ -35,7 +35,7 @@
     [r setRequestString:@"http://127.0.0.1:8080"];
     [r addRequestHeadValue:@{@"content-type":@"application/x-www-form-urlencoded",@"sig":arg}];
     [r requestPOST:@{@"username":@"test71",@"password":@"wanxue去哦"}];
-    [r startAsynRequest];
+//    [r startAsynRequest];
 //
     [GraphicsContext drawRectangle:nil Point:CGPointMake(20, 180) FillColor:[[UIColor redColor] CGColor] StrokeColor:[[UIColor greenColor] CGColor] LineWidth:1 Width:30 Height:40];
 //    [GraphicsContext drawRectangle:nil Point:CGPointMake(200, 180) FillColor:nil StrokeColor:[[UIColor greenColor] CGColor] LineWidth:1 Width:30 Height:40];

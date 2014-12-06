@@ -7,7 +7,7 @@
 //
 
 #import "SkinDictionary.h"
-#import "Common+Expand.h"
+#import "Common.h"
 
 #define DEFAULTCOLORPACKEGE @"colorpackge";
 

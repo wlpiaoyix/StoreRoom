@@ -9,6 +9,13 @@
 #import "PopUpDialogView.h"
 #import <objc/runtime.h>
 
+
+UIColor *PopUpButtonBgStateHighlighted;
+UIColor *PopUpButtonBgStateNormal;
+UIColor *PopUpButtonTxtStateHighlighted;
+UIColor *PopUpButtonTxtStateNormal;
+
+
 static float PopUpDialogView_buttonHight;
 static float PopUpDialogView_buttonViewWidth;
 @interface PopUpDialogView()
@@ -25,8 +32,13 @@ static float PopUpDialogView_buttonViewWidth;
 }
 +(void)initialize{
     [super initialize];
-    PopUpDialogView_buttonHight = 40;
+    PopUpDialogView_buttonHight = 45;
     PopUpDialogView_buttonViewWidth = 260;
+    
+    if(!PopUpButtonBgStateHighlighted)PopUpButtonBgStateHighlighted = [UIColor colorWithRed:0.008 green:0.439 blue:0.773 alpha:1];
+    if(!PopUpButtonBgStateNormal)PopUpButtonBgStateNormal = [UIColor whiteColor];
+    if(!PopUpButtonTxtStateHighlighted)PopUpButtonTxtStateHighlighted = [UIColor whiteColor];
+    if(!PopUpButtonTxtStateNormal)PopUpButtonTxtStateNormal = [UIColor colorWithRed:0.404 green:0.404 blue:0.404 alpha:1];
 }
 - (id)initWithFrame:(CGRect)frame
 {
@@ -36,12 +48,8 @@ static float PopUpDialogView_buttonViewWidth;
     }
     return self;
 }
-+(bool) IOS7_0Later{
-    float temp = [[UIDevice currentDevice].systemVersion floatValue];
-    return temp>= 7.0?true:false;
-}
 
-+(PopUpDialogView*) initWithTitle:(NSString *)title message:(NSString *)message TargetView:(UIView*) targetView delegate:(id/*<PopUpDialogViewDelegate>*/)_delegate_ cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...{
++(PopUpDialogView*) initWithTitle:(NSString *)title message:(NSString *)message TargetView:(UIView*) targetView delegate:(id<PopUpDialogViewDelegate>)_delegate_ cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...{
     
     NSMutableArray *_resources = [NSMutableArray new];
     if(otherButtonTitles){
@@ -189,11 +197,14 @@ static float PopUpDialogView_buttonViewWidth;
 }
 -(UIButton*) createCancelButton:(NSString*) cancelTitle{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.718 green:0.718 blue:0.718 alpha:1]] forState:UIControlStateHighlighted];
-    [btn setTitleColor:[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:PopUpButtonBgStateNormal] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:PopUpButtonBgStateHighlighted] forState:UIControlStateHighlighted];
+    
+    [btn setTitleColor:PopUpButtonTxtStateNormal forState:UIControlStateNormal];
+    [btn setTitleColor:PopUpButtonTxtStateHighlighted forState:UIControlStateHighlighted];
+    
     [btn setTitle:cancelTitle forState:UIControlStateNormal];
-    btn.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    btn.titleLabel.font = [UIFont systemFontOfSize:20];
     [btn addTarget:self action:@selector(clickCancelButton:) forControlEvents:UIControlEventTouchUpInside];
     [btn setCornerRadiusAndBorder:0.0f BorderWidth:0.5f BorderColor:[UIColor colorWithRed:0.482 green:0.482 blue:0.482 alpha:0.7f]];
     btn.tag = self->tagButton+self->indexButton;
@@ -202,10 +213,11 @@ static float PopUpDialogView_buttonViewWidth;
 }
 -(UIButton*) createOtherButton:(NSString*) otherTitle{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.718 green:0.718 blue:0.718 alpha:1]] forState:UIControlStateHighlighted];
-    btn.titleLabel.font = [UIFont systemFontOfSize:16];
-    [btn setTitleColor:[UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:PopUpButtonBgStateNormal] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageWithColor:PopUpButtonBgStateHighlighted] forState:UIControlStateHighlighted];
+    btn.titleLabel.font = [UIFont systemFontOfSize:20];
+    [btn setTitleColor:PopUpButtonTxtStateNormal forState:UIControlStateNormal];
+    [btn setTitleColor:PopUpButtonTxtStateHighlighted forState:UIControlStateHighlighted];
     [btn setTitle:otherTitle forState:UIControlStateNormal];
     [btn setCornerRadiusAndBorder:0.0f BorderWidth:0.5f BorderColor:[UIColor colorWithRed:0.482 green:0.482 blue:0.482 alpha:0.7f]];
     btn.tag = self->tagButton+self->indexButton;

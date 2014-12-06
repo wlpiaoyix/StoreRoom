@@ -32,6 +32,7 @@
     if (self=[super init]) {
         self.encoding = NSUTF8StringEncoding;
         _httpHeaderFields = [NSMutableDictionary new];
+//        [self addRequestHeadValue:@{@"content-type":@"application/x-www-form-urlencoded"}];
     }
     return self;
 }
@@ -68,18 +69,22 @@
 -(void) requestPOST:(NSDictionary*) params OutTime:(int) outTime{
     _request = [self createDataRequest:params OutTime:outTime];
     [_request setHTTPMethod:POST];
+    [self startAsynRequest];
 }
 -(void) requestPUT:(NSDictionary*) params OutTime:(int) outTime{
     _request = [self createDataRequest:params OutTime:outTime];
     [_request setHTTPMethod:PUT];
+    [self startAsynRequest];
 }
 -(void) requestGET:(NSDictionary*) params OutTime:(int) outTime{
     _request = [self createUrlRequest:params OutTime:outTime];
     [_request setHTTPMethod:GET];
+    [self startAsynRequest];
 }
 -(void) requestDELETE:(NSDictionary*) params OutTime:(int) outTime{
     _request = [self createUrlRequest:params OutTime:outTime];
     [_request setHTTPMethod:DELETE];
+    [self startAsynRequest];
 }
 -(NSString*) parseDicParamsToStringParams:(NSDictionary*) dicParam{
     if (!dicParam) {
@@ -135,10 +140,19 @@
 }
 -(void) startAsynRequest{
     _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self];
-    _data = [NSMutableData new];
     [_connection start];
 }
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    _data = [NSMutableData new];
+//    long long expectedContentLength = response.expectedContentLength;
+//    [_data setLength:(NSUInteger)expectedContentLength];
+    
+    // 注意这里将NSURLResponse对象转换成NSHTTPURLResponse对象才能去
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+    if ([response respondsToSelector:@selector(allHeaderFields)]) {
+        NSDictionary *dictionary = [httpResponse allHeaderFields];
+        NSLog(@"allHeaderFields: %@",dictionary);
+    }
 
 }
 -(void)connection:(NSURLConnection *)theConnection didReceiveData:(NSData *)incrementalData {
