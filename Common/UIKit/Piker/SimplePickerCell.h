@@ -14,5 +14,6 @@ typedef void (^CallBackPickerCellStatu) (SimplePickerCell *cell,BOOL isSelected)
 @interface SimplePickerCell : UITableViewCell
 @property (nonatomic) UIEdgeInsets edgeInsetsCellView;
 @property (nonatomic) UIView *subCell;
+@property (nonatomic)  BOOL selectedStatus;
 -(void) setCallBackPickerCellStatu:(CallBackPickerCellStatu) callback;
 @end

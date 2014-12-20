@@ -8,18 +8,14 @@
 
 #import "VendorMoveView.h"
 #import "UIView+convenience.h"
-//#import "VendorButtomView.h"
 
 @interface VendorMoveView(){
     CallBackVendorTouchOpt callbackBegin;
     CallBackVendorTouchOpt callbackMove;
     CallBackVendorTouchOpt callbackEnd;
     NSDictionary *dicscrollenabled;
-//    VendorButtomView *viewTemp;
-//    UIView *viewButtom;
 }
-@property (nonatomic,strong) NSMutableArray *moveViews;
-@property (nonatomic,assign) UIView<VendorMoveSubViewDelegate> *touchView;
+@property (nonatomic,assign) VendorMoveView *touchView;
 @property (nonatomic,assign) UIView *orgView;
 @property (nonatomic) CGPoint offPoint;
 @end
@@ -46,17 +42,21 @@
 -(void) initparams{
     self.exclusiveTouch = YES;
     dicscrollenabled = [NSMutableDictionary new];
+    _flagShouldTouchMove = true;
 }
 -(void) addSubview:(UIView *)view{
     [super addSubview:view];
-    if ([view conformsToProtocol:@protocol(VendorMoveSubViewDelegate)]) {
-        if (!_moveViews) {
-            _moveViews = [NSMutableArray new];
-        }
-        [_moveViews addObject:view];
-    }
+//    if ([view conformsToProtocol:@protocol(VendorMoveSubViewDelegate)]) {
+//        if (!_moveViews) {
+//            _moveViews = [NSMutableArray new];
+//        }
+//        [_moveViews addObject:view];
+//    }
 }
 -(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    if (!_flagShouldTouchMove) {
+        return;
+    }
     for (NSString *key in [dicscrollenabled allKeys]) {
         [dicscrollenabled setValue:nil forKey:key];
     }
@@ -64,13 +64,9 @@
     @try {
         UITouch *touch = touches.anyObject;
         point = [touch locationInView: [touch view]];
-        _touchView = [self getTouchView:point];
-        if (_touchView) {
-            _orgView = self;
-        }else{
-            _touchView = self;
-            _orgView = self.superview;
-        }
+        
+        _touchView = self;
+        _orgView = self.superview;
         
         point = [touch locationInView: _orgView];
         _offPoint = point;
@@ -83,6 +79,9 @@
     }
 }
 -(void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    if (!_flagShouldTouchMove) {
+        return;
+    }
     if (_touchView) {
         UITouch *touch = touches.anyObject;
         CGPoint point = [touch locationInView: _orgView];
@@ -109,6 +108,9 @@
     }
 }
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    if (!_flagShouldTouchMove) {
+        return;
+    }
     @try {
         _offPoint.x = _offPoint.y = 0;
         if (callbackEnd) {
@@ -125,22 +127,13 @@
     }
 }
 -(void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+    if (!_flagShouldTouchMove) {
+        return;
+    }
     [self setScrollView:self enabled:YES deep:0];
     for (NSString *key in [dicscrollenabled allKeys]) {
         [dicscrollenabled setValue:nil forKey:key];
     }
-}
--(UIView<VendorMoveSubViewDelegate>*) getTouchView:(CGPoint) touchPoint{
-    UIView<VendorMoveSubViewDelegate> *touchView = nil;
-    for (UIView<VendorMoveSubViewDelegate> *view in _moveViews) {
-        CGRect r = view.frame;
-        if (r.origin.x<touchPoint.x&&r.origin.y<touchPoint.y) {
-            if (r.origin.x+r.size.width>r.origin.x&&r.origin.y+r.size.height>r.origin.y) {
-                touchView = view;
-            }
-        }
-    }
-    return touchView;
 }
 
 -(void) setCallBackVendorTouchBegin:(CallBackVendorTouchOpt) begin{
@@ -164,7 +157,7 @@
             }
         }else{
             if (((UIScrollView*)view).scrollEnabled) {
-                [dicscrollenabled setValue:@" " forKey:key];
+                [dicscrollenabled setValue:@YES forKey:key];
             }else{
                 [dicscrollenabled setValue:nil forKey:key];
             }

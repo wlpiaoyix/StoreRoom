@@ -12,11 +12,15 @@
 extern float PIKER_MUTIPLE_VALUE;
 extern float PIKER_DELERATIONRATE;
 
+
 typedef void (^CallBackUnSelectedCell) (UITableViewCell *cell,BOOL isauto);
 typedef void (^CallBackSelectedCell) (UITableViewCell *cell,BOOL isauto);
 
 @interface SimplePikerTable : UITableView
 @property (readonly) float scrolloffy;
+@property (nonatomic) BOOL flagOffy;
+@property (nonatomic,readonly) NSInteger lastRow;
+@property (nonatomic,readonly) NSInteger curRow;
 -(void) scrollViewDidEndDecelerating;
 -(void) setCallBackUnSelectedCell:(CallBackUnSelectedCell) callback;
 -(void) setCallBackSelectedCell:(CallBackSelectedCell) callBack;

@@ -65,28 +65,36 @@
 }
 
 -(void)intputshow:(NSNotification *)notification{
+    
+    if (_tapGestureRecognizer&&showStart&&showEnd) {
+        [self.view removeGestureRecognizer:_tapGestureRecognizer];
+        [self.view addGestureRecognizer:_tapGestureRecognizer];
+    }
     if(showStart){
         showStart();
     }
     if(showEnd){
         //键盘显示，设置toolbar的frame跟随键盘的frame
-//        CGFloat animationTime = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-        [UIView animateWithDuration:0.25 animations:^{
+        CGFloat animationTime = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        [UIView animateWithDuration:animationTime>0?animationTime:0.25 animations:^{
             CGRect keyBoardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
             keyBoardFrame.origin.y -= 20;
             showEnd(keyBoardFrame);
         }];
     }
-    }
+}
 
 -(void)intputhidden:(NSNotification *)notification{
+    if (_tapGestureRecognizer&&hiddenEnd&&hiddenStart) {
+        [self.view removeGestureRecognizer:_tapGestureRecognizer];
+    }
     if(hiddenStart){
         hiddenStart();
     }
     if(hiddenEnd){
         //键盘显示，设置toolbar的frame跟随键盘的frame
-//        CGFloat animationTime = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
-        [UIView animateWithDuration:0.25 animations:^{
+        CGFloat animationTime = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        [UIView animateWithDuration:animationTime>0?animationTime:0.25 animations:^{
             CGRect keyBoardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
             hiddenEnd(keyBoardFrame);
         }];
@@ -128,7 +136,7 @@
 -(void)setKeyboardNotification{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(intputshow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(intputhidden:) name:UIKeyboardWillHideNotification object:nil];
-    _tapGestureRecognizer = [self.view addTarget:self action:@selector(resignFirstResponder)];
+    _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignFirstResponder)];
 }
 
 -(BOOL) NCshouldAutorotate {

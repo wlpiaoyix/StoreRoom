@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol VendorMoveSubViewDelegate <NSObject>
-@end
-
 typedef void (^CallBackVendorTouchOpt)(CGRect frame);
-@interface VendorMoveView : UIView<VendorMoveSubViewDelegate>
+@interface VendorMoveView : UIView
+//是否可以移动，默认是true
+@property (nonatomic) BOOL flagShouldTouchMove;
+
 -(void) setCallBackVendorTouchBegin:(CallBackVendorTouchOpt) begin;
 -(void) setCallBackVendorTouchMove:(CallBackVendorTouchOpt) move;
 -(void) setCallBackVendorTouchEnd:(CallBackVendorTouchOpt) end;

@@ -70,7 +70,6 @@
         }
     }
     
-    
     UIView *rootView = [[topWindow subviews] objectAtIndex:0];
     id nextResponder = [rootView nextResponder];
     
@@ -111,20 +110,14 @@
 //计算文字占用的大小
 +(CGSize) getBoundingRectWithSize:(NSString*) txt font:(UIFont*) font size:(CGSize) size{
     CGSize _size;
-    
-    if ([self getSystemVersion]>=7.0) {
-        NSDictionary *attribute = @{NSFontAttributeName: font};
-        NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine |
-        NSStringDrawingUsesLineFragmentOrigin |
-        NSStringDrawingUsesFontLeading;
-        _size = [txt boundingRectWithSize:size options: options attributes:attribute context:nil].size;
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
-#endif
-    } else {
+        NSDictionary *attribute = @{NSFontAttributeName: font};
+        NSStringDrawingOptions options = NSStringDrawingTruncatesLastVisibleLine|
+        NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading;
+        _size = [txt boundingRectWithSize:size options: options attributes:attribute context:nil].size;
+#else
         _size = [txt sizeWithFont:font constrainedToSize:size lineBreakMode:NSLineBreakByCharWrapping];
-#if __IPHONE_OS_VERSION_MAX_ALLOWED <= __IPHONE_6_1
 #endif
-    }
     return _size;
 }
 +(CGFloat) getFontHeight:(NSString*) fontName Size:(CGFloat) size{

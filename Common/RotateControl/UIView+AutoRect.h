@@ -14,7 +14,7 @@
 -(void) autoresizingMask_TBLRH;
 -(void) autoresizingMask_BW;
 -(void) autoresizingMask_BLR;
--(void) autoresizingMask_TLRWH;
+-(void) autoresizingMask_TLRW;
 -(void) autoresizingMask_TBLRWH;
 -(void) autoresizingMask_TBRWH;
 -(void) autoresizingMask_TBLH;

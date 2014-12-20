@@ -20,6 +20,11 @@
 */
  @property (nonatomic,assign) id<SimplePikerViewDelegate> delegate;
 /**
+ 滑动完成后选择Cell
+ */
+@property (nonatomic) BOOL selectedWhenScroll;
+
+/**
  目标的放大率 >0
 */
  @property (nonatomic) float mutipleValue;
@@ -34,7 +39,8 @@
 /**
  跳转到指定的行
  */
--(void) scrollToRowAtIndex:(NSInteger) index animated:(BOOL) animated;
+@property (nonatomic) NSInteger rowSkip;
+-(void) setRowSkip:(NSInteger)rowSkip animated:(BOOL) animated;
 /**
  重载数据
  */

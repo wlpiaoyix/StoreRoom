@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  ShiShang
+
+  Created by wlpiaoyi on 14/12/7.
+  Copyright (c) 2014年 wlpiaoyi. All rights reserved.
+*/
+
+"comm_confirm" = "确定";
+"comm_cancel" = "取消";

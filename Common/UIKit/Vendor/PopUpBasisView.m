@@ -39,8 +39,8 @@
     self->contextView.backgroundColor = [UIColor clearColor];
     self->contextView.tag = arc4random() % 999999999;
     [self->contextView setClipsToBounds:YES];
-    self->floatingview = [UIView new];
-    self->floatingview.backgroundColor = [UIColor clearColor];
+    floatingview = [UIView new];
+    floatingview.backgroundColor = [UIColor clearColor];
     [self addSubview:self->contextView];
     //<==
     //==>
@@ -88,7 +88,7 @@
         for (UIView *_view_ in [self->contextView subviews]) {
             [_view_ removeFromSuperview];
         }
-        
+        _viewShow = view;
         CGRect r = self->contextView.frame;
         CGRect r2 = view.frame;
         
@@ -109,7 +109,7 @@
             [self->contextView addSubview:self->closeButton];
         }
         self->contextBaseFrame = self->contextView.frame;
-        self->floatingview.frame = CGRectMake(0, 0, self->contextBaseFrame.size.width, self->contextBaseFrame.size.height);
+        floatingview.frame = CGRectMake(0, 0, self->contextBaseFrame.size.width, self->contextBaseFrame.size.height);
     }
 }
 
@@ -168,7 +168,7 @@ CGPoint point;
     [self showRotateSize];
 }
 -(void) hiddenRorateSize{
-    [self->contextView addSubview:self->floatingview];
+    [self->contextView addSubview:floatingview];
     self->contextView.alpha = 1;
     CATransform3D transformx = CATransform3DIdentity;
     transformx = CATransform3DScale(transformx, 1, 1, INT32_MAX);
@@ -180,7 +180,7 @@ CGPoint point;
         self->contextView.layer.transform = transform;
     } completion:^(BOOL finished) {
         self->contextView.alpha = 1;
-        [self->floatingview removeFromSuperview];
+        [floatingview removeFromSuperview];
         [super removeFromSuperview];
     }];
 }
@@ -223,7 +223,7 @@ CGPoint point;
 }
 -(void) showRotateSize{
     self->contextView.frame = self->contextBaseFrame;
-    [self->contextView addSubview:self->floatingview];
+    [self->contextView addSubview:floatingview];
     self->contextView.alpha = 0;
     CATransform3D transformx = CATransform3DIdentity;
     transformx = CATransform3DScale(transformx, 0, 0, INT32_MAX);
@@ -235,12 +235,12 @@ CGPoint point;
         self->contextView.alpha = 1;
     } completion:^(BOOL finished) {
         self->contextView.frame = self->contextBaseFrame;
-        [self->floatingview removeFromSuperview];
+        [floatingview removeFromSuperview];
     }];
 }
 -(void) showRotateCircle{
     self->contextView.frame = self->contextBaseFrame;
-    [self->contextView addSubview:self->floatingview];
+    [self->contextView addSubview:floatingview];
     dispatch_queue_t queue;
     queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue,^{
@@ -273,7 +273,7 @@ CGPoint point;
             self->contextView.layer.transform = transformx;
             self->contextView.frame = self->contextBaseFrame;
             self->contextView.alpha = 1;
-            [self->floatingview removeFromSuperview];
+            [floatingview removeFromSuperview];
         });
     });
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_5_1
@@ -281,5 +281,8 @@ CGPoint point;
 #else
     dispatch_release(queue);
 #endif
+}
+-(void) setViewShow:(UIView *)viewShow{
+    [self addSubview:viewShow];
 }
 @end

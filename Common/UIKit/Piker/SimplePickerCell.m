@@ -59,16 +59,13 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    if (self.selected!=selected&&callBackPickerCellStatu) {
+-(void) setSelectedStatus:(BOOL) selected{
+    if (_selectedStatus!=selected&&callBackPickerCellStatu) {
         callBackPickerCellStatu(self,selected);
     }
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    [self setSelected:selected];
+    _selectedStatus = selected;
 }
-
-
 -(void) setCallBackPickerCellStatu:(CallBackPickerCellStatu) callback{
     callBackPickerCellStatu = callback;
 }

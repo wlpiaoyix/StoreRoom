@@ -7,12 +7,17 @@
 //
 
 #import "NetWorkHTTP.h"
+#import "JSON.h"
+#import "PopUpDialogView.h"
 //==>传输方法
 #define GET @"GET"
 #define POST @"POST"
 #define PUT @"PUT"
 #define DELETE @"DELETE"
 //<==
+#define HTTP_HEAD_KEY_ContentType @"Content-Type"
+#define HTTP_HEAD_VALUE_ContentType_JSON  @"application/json"
+
 @interface NetWorkHTTP(){
 @private
     CallBackNetWorkHTTP callBackSuccess;
@@ -43,7 +48,7 @@
     _encoding = encoding;
 }
 -(void) setRequestString:(NSString*) requestString{
-    _requestString= requestString;
+    _requestString= [requestString stringByAddingPercentEscapesUsingEncoding:self.encoding];
 }
 -(void) setSuccessCallBack:(CallBackNetWorkHTTP) callback{
     callBackSuccess = callback;
@@ -86,10 +91,17 @@
     [_request setHTTPMethod:DELETE];
     [self startAsynRequest];
 }
--(NSString*) parseDicParamsToStringParams:(NSDictionary*) dicParam{
+-(NSString*) checkParamsConstruction:(NSDictionary*) dicParam{
     if (!dicParam) {
         return nil;
     }
+    NSString *contentType = [self.httpHeaderFields objectForKey:HTTP_HEAD_KEY_ContentType];
+    if ([((NSString*)HTTP_HEAD_VALUE_ContentType_JSON) isEqualToString:contentType]) {
+        return [dicParam JSONRepresentation];
+    }
+    return [self checkParamsConstructionToNormarl:dicParam];
+}
+-(NSString*) checkParamsConstructionToNormarl:(NSDictionary*) dicParam{
     NSString *stringParams = @"";
     for (NSString *key in [dicParam allKeys]) {
         id value = [dicParam objectForKey:key];
@@ -109,9 +121,7 @@
     return stringParams;
 }
 -(NSMutableURLRequest*) createUrlRequest:(NSDictionary*) params OutTime:(int) outTime{
-//    params = nil;
-    NSString *temp = params?[NSString stringWithFormat:@"%@?%@",_requestString,[self parseDicParamsToStringParams:params]]:_requestString;
-    temp = [temp stringByAddingPercentEscapesUsingEncoding:self.encoding];
+    NSString *temp = params?[NSString stringWithFormat:@"%@?%@",self.requestString,[[self checkParamsConstructionToNormarl:params] stringByAddingPercentEscapesUsingEncoding:self.encoding]]:self.requestString;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: temp] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:outTime];
     if (self.httpHeaderFields) {
         [self addAllHttpHeaderFields:self.httpHeaderFields Request:request];
@@ -119,9 +129,9 @@
     return request;
 }
 -(NSMutableURLRequest*) createDataRequest:(NSDictionary*) params OutTime:(int) outTime{
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_requestString]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:outTime];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.requestString]  cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:outTime];
     if (params) {
-        NSData *postData = [[self parseDicParamsToStringParams:params] dataUsingEncoding:self.encoding  allowLossyConversion:YES];
+        NSData *postData = [[self checkParamsConstruction:params] dataUsingEncoding:self.encoding  allowLossyConversion:YES];
         [request setHTTPBody:postData];
         NSString *postLength = [NSString stringWithFormat:@"%lli", (long long int)[postData length]];
         [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
@@ -144,8 +154,6 @@
 }
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     _data = [NSMutableData new];
-//    long long expectedContentLength = response.expectedContentLength;
-//    [_data setLength:(NSUInteger)expectedContentLength];
     
     // 注意这里将NSURLResponse对象转换成NSHTTPURLResponse对象才能去
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
@@ -169,7 +177,6 @@
 - (void)connection:(NSURLConnection *)connection   didSendBodyData:(NSInteger)bytesWritten
  totalBytesWritten:(NSInteger)totalBytesWritten
 totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite{
-
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection*)theConnection {
@@ -192,6 +199,42 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite{
         }
     }
 }
+//
+//
+//- (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace{
+//    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+//}
+//- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge{
+//    [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+//}
+//- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+//{
+//    static CFArrayRef certs;
+//    if (!certs) {
+//        NSData*certData =[NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"srca" ofType:@"cer"]];
+//        SecCertificateRef rootcert =SecCertificateCreateWithData(kCFAllocatorDefault,CFBridgingRetain(certData));
+//        const void *array[1] = { rootcert };
+//        certs = CFArrayCreate(NULL, array, 1, &kCFTypeArrayCallBacks);
+//        CFRelease(rootcert);    // for completeness, really does not matter
+//    }
+//    
+//    SecTrustRef trust = [[challenge protectionSpace] serverTrust];
+//    int err;
+//    SecTrustResultType trustResult = 0;
+//    err = SecTrustSetAnchorCertificates(trust, certs);
+//    if (err == noErr) {
+//        err = SecTrustEvaluate(trust,&trustResult);
+//    }
+//    CFRelease(trust);
+//    BOOL trusted = (err == noErr) && ((trustResult == kSecTrustResultProceed)||(trustResult == kSecTrustResultConfirm) || (trustResult == kSecTrustResultUnspecified));
+//    
+//    if (trusted) {
+//        [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+//    }else{
+//        [challenge.sender cancelAuthenticationChallenge:challenge];
+//    }
+//}
+
 -(void) dealloc{
     [self cancel];
 }

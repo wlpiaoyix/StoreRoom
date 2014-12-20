@@ -25,6 +25,8 @@
 		1538C2C51A077AB100DAC8AA /* UITextField+Param.m in Sources */ = {isa = PBXBuildFile; fileRef = 1538C2C01A077AB100DAC8AA /* UITextField+Param.m */; };
 		1538C2C61A077AB100DAC8AA /* UIView+AutoRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 1538C2C21A077AB100DAC8AA /* UIView+AutoRect.m */; };
 		153A2B3A19ED27F10075C336 /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 153A2B3919ED27F10075C336 /* NSMutableArray+convenience.m */; };
+		153BCFC61A429D8600A6069D /* PopUpVendorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 153BCFC51A429D8600A6069D /* PopUpVendorView.m */; };
+		15441D161A341A980083DFA9 /* Common_Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 15441D141A341A980083DFA9 /* Common_Localizable.strings */; };
 		15CC2CF619EB689600188D50 /* access.c in Sources */ = {isa = PBXBuildFile; fileRef = 15CC2CC019EB689600188D50 /* access.c */; };
 		15CC2CF719EB689600188D50 /* alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 15CC2CC219EB689600188D50 /* alloc.c */; };
 		15CC2CF819EB689600188D50 /* attrask.c in Sources */ = {isa = PBXBuildFile; fileRef = 15CC2CC319EB689600188D50 /* attrask.c */; };
@@ -170,6 +172,9 @@
 		1538C2C21A077AB100DAC8AA /* UIView+AutoRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AutoRect.m"; sourceTree = "<group>"; };
 		153A2B3819ED27F10075C336 /* NSMutableArray+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+convenience.h"; sourceTree = "<group>"; };
 		153A2B3919ED27F10075C336 /* NSMutableArray+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+convenience.m"; sourceTree = "<group>"; };
+		153BCFC41A429D8600A6069D /* PopUpVendorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpVendorView.h; sourceTree = "<group>"; };
+		153BCFC51A429D8600A6069D /* PopUpVendorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpVendorView.m; sourceTree = "<group>"; };
+		15441D151A341A980083DFA9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Common_Localizable.strings; sourceTree = "<group>"; };
 		15CC2CBB19EB689600188D50 /* buffio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffio.h; sourceTree = "<group>"; };
 		15CC2CBC19EB689600188D50 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
 		15CC2CBD19EB689600188D50 /* tidy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tidy.h; sourceTree = "<group>"; };
@@ -413,6 +418,22 @@
 			path = Piker;
 			sourceTree = "<group>";
 		};
+		15441D0F1A341A7C0083DFA9 /* Localized */ = {
+			isa = PBXGroup;
+			children = (
+				15441D131A341A980083DFA9 /* zh-Hans.lproj */,
+			);
+			path = Localized;
+			sourceTree = "<group>";
+		};
+		15441D131A341A980083DFA9 /* zh-Hans.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				15441D141A341A980083DFA9 /* Common_Localizable.strings */,
+			);
+			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
 		15CC2CB719EB689600188D50 /* GdataXML */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,6 +644,8 @@
 				15DFBA9619E404E2001DCD3A /* PopUpBasisView.m */,
 				15DFBA9719E404E2001DCD3A /* PopUpDialogView.h */,
 				15DFBA9819E404E2001DCD3A /* PopUpDialogView.m */,
+				153BCFC41A429D8600A6069D /* PopUpVendorView.h */,
+				153BCFC51A429D8600A6069D /* PopUpVendorView.m */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -695,6 +718,7 @@
 		15EAF76A19D7F4BF001E3DA9 = {
 			isa = PBXGroup;
 			children = (
+				15441D0F1A341A7C0083DFA9 /* Localized */,
 				15EAF77C19D7F4BF001E3DA9 /* Common */,
 				151936AC19D958FE009CF3C0 /* Common.h */,
 				151936AD19D958FE009CF3C0 /* Common.m */,
@@ -914,6 +938,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 15EAF76A19D7F4BF001E3DA9;
 			productRefGroup = 15EAF77419D7F4BF001E3DA9 /* Products */;
@@ -939,6 +964,7 @@
 				15DFB4D019F254C100C0482F /* dict2.xml in Resources */,
 				15EAF78919D7F4BF001E3DA9 /* Images.xcassets in Resources */,
 				15DFBAA019E404E2001DCD3A /* MJRefresh.bundle in Resources */,
+				15441D161A341A980083DFA9 /* Common_Localizable.strings in Resources */,
 				15DFBAB119E404E3001DCD3A /* btn_close_normal@2x.png in Resources */,
 				15DFB4CD19F254C100C0482F /* 3715.zip in Resources */,
 				15DFBAB319E404E3001DCD3A /* btn_close_selected@2x.png in Resources */,
@@ -1029,6 +1055,7 @@
 				15DFBAA519E404E3001DCD3A /* UIScrollView+Extension.m in Sources */,
 				151F2BB219FE220F00458AF6 /* FDEntityManager.m in Sources */,
 				151936AE19D958FE009CF3C0 /* Common.m in Sources */,
+				153BCFC61A429D8600A6069D /* PopUpVendorView.m in Sources */,
 				15CC2D0D19EB689600188D50 /* tmbstr.c in Sources */,
 				15CC2D0519EB689600188D50 /* localize.c in Sources */,
 				15DFBAA219E404E2001DCD3A /* MJRefreshConst.m in Sources */,
@@ -1074,6 +1101,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		15441D141A341A980083DFA9 /* Common_Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15441D151A341A980083DFA9 /* zh-Hans */,
+			);
+			name = Common_Localizable.strings;
+			sourceTree = "<group>";
+		};
 		15EAF77F19D7F4BF001E3DA9 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
