@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Common/Common.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ShiShang/ShiShang.xcodeproj">
    </FileRef>
    <FileRef
@@ -9,8 +12,5 @@
    </FileRef>
    <FileRef
       location = "group:Audio/Audio.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Common/Common.xcodeproj">
    </FileRef>
 </Workspace>

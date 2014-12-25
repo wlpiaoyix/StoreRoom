@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  ShiShang
+
+  Created by wlpiaoyi on 14/12/7.
+  Copyright (c) 2014年 wlpiaoyi. All rights reserved.
+*/
+"activity_data_loading" = "请等待...";
+"popup_default_title" = "温馨提示";
+"popup_default_confirm_name" = "确定";
+"popup_default_cancel_name" = "取消";
+"net_faild" = "网络请求失败！";

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0610"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15EAF77219D7F4BF001E3DA9"
+               BlueprintIdentifier = "152AA05F1A4BA15500F059B3"
                BuildableName = "Common.app"
                BlueprintName = "Common"
+               ReferencedContainer = "container:Common.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "152AA0781A4BA15500F059B3"
+               BuildableName = "CommonTests.xctest"
+               BlueprintName = "CommonTests"
                ReferencedContainer = "container:Common.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15EAF78D19D7F4BF001E3DA9"
+               BlueprintIdentifier = "152AA0781A4BA15500F059B3"
                BuildableName = "CommonTests.xctest"
                BlueprintName = "CommonTests"
                ReferencedContainer = "container:Common.xcodeproj">
@@ -42,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15EAF77219D7F4BF001E3DA9"
+            BlueprintIdentifier = "152AA05F1A4BA15500F059B3"
             BuildableName = "Common.app"
             BlueprintName = "Common"
             ReferencedContainer = "container:Common.xcodeproj">
@@ -61,7 +75,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15EAF77219D7F4BF001E3DA9"
+            BlueprintIdentifier = "152AA05F1A4BA15500F059B3"
             BuildableName = "Common.app"
             BlueprintName = "Common"
             ReferencedContainer = "container:Common.xcodeproj">
@@ -79,7 +93,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15EAF77219D7F4BF001E3DA9"
+            BlueprintIdentifier = "152AA05F1A4BA15500F059B3"
             BuildableName = "Common.app"
             BlueprintName = "Common"
             ReferencedContainer = "container:Common.xcodeproj">
