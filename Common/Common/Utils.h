@@ -41,7 +41,7 @@ long timeInterval();
 //==>应用设置
 +(UIWindow*) getWindow;
 +(UIViewController*) getCurrentController;
-+(void) setRootController:(UIViewController*) controller window:(UIWindow *)window;
++(UIWindow*) setRootController:(UIViewController*) controller;
 +(void) setStatusBarHidden:(BOOL) barHidden;
 //<==
 

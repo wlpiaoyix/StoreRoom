@@ -20,6 +20,8 @@ typedef void (^dispatch_block_dialog_vendor)(PopUpDialogVendorView* dialogView,N
 @property (nonatomic,strong) UIColor *buttonBgColorNormal;
 @property (nonatomic,strong) UIColor *buttonBgColorHighLight;
 @property (nonatomic,strong) UIColor *borderColor;
+@property (nonatomic,strong) UIFont *buttonNameFont;
+
 @property (nonatomic) float buttonHeight;
 
 

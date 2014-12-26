@@ -28,6 +28,10 @@
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+-(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+}
 -(void) onclick{
     [self goNextController:[HViewController new]];
 }

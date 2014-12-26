@@ -27,13 +27,23 @@
     [_button setBackgroundColor:[UIColor redColor]];
     [self setTitle:@"SHU"];
     
+    
+    
+    
+    _buttonx = [UIButton new];
+    _buttonx.frame = CGRectMake(30, 140, 80, 80);
+    [_buttonx setTitle:@"afasdf" forState:UIControlStateNormal];
+    [_buttonx addTarget:self action:@selector(onclickx) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_buttonx];
+    [_buttonx setBackgroundColor:[UIColor redColor]];
+    
     // Do any additional setup after loading the view.
 }
 -(void) onclick{
     [self goNextController:[ViewController new]];
 }
 -(void) onclickx{
-    [self backPreviousController];
+    [Utils showAlert:@"我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀" Title:nil];
 }
 
 - (void)didReceiveMemoryWarning {

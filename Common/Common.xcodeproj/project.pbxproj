@@ -42,7 +42,6 @@
 		152AA1001A4BE5CC00F059B3 /* GraphicsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0D31A4BE5CC00F059B3 /* GraphicsLayer.m */; };
 		152AA1011A4BE5CC00F059B3 /* GraphicsThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0D51A4BE5CC00F059B3 /* GraphicsThumb.m */; };
 		152AA1021A4BE5CC00F059B3 /* ObserverListner.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0D81A4BE5CC00F059B3 /* ObserverListner.m */; };
-		152AA1031A4BE5CC00F059B3 /* SimpleObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0DA1A4BE5CC00F059B3 /* SimpleObserver.m */; };
 		152AA1041A4BE5CC00F059B3 /* NetWorkDownLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0DE1A4BE5CC00F059B3 /* NetWorkDownLoad.m */; };
 		152AA1051A4BE5CC00F059B3 /* NetWorkHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0E01A4BE5CC00F059B3 /* NetWorkHTTP.m */; };
 		152AA1061A4BE5CC00F059B3 /* ReachabilityListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0E31A4BE5CC00F059B3 /* ReachabilityListener.m */; };
@@ -106,7 +105,9 @@
 		152AA1F71A4BEB9200F059B3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 152AA1F61A4BEB9200F059B3 /* libz.dylib */; };
 		152AA1FA1A4BED8B00F059B3 /* ConfigManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA1F91A4BED8B00F059B3 /* ConfigManage.m */; };
 		152AA1FC1A4BEE8000F059B3 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 152AA1FB1A4BEE8000F059B3 /* libsqlite3.dylib */; };
-		152AA2031A4C01D500F059B3 /* Common_Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152AA2011A4C01D500F059B3 /* Common_Localizable.strings */; };
+		152AA2061A4C121500F059B3 /* Basic_Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152AA2041A4C121500F059B3 /* Basic_Localizable.strings */; };
+		152AB8D61A4CFB2100365D67 /* DeviceOrientationListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB8D51A4CFB2100365D67 /* DeviceOrientationListener.m */; };
+		152AB8D91A4D00F900365D67 /* BaseWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB8D81A4D00F900365D67 /* BaseWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,8 +191,6 @@
 		152AA0D51A4BE5CC00F059B3 /* GraphicsThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicsThumb.m; sourceTree = "<group>"; };
 		152AA0D71A4BE5CC00F059B3 /* ObserverListner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObserverListner.h; sourceTree = "<group>"; };
 		152AA0D81A4BE5CC00F059B3 /* ObserverListner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObserverListner.m; sourceTree = "<group>"; };
-		152AA0D91A4BE5CC00F059B3 /* SimpleObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleObserver.h; sourceTree = "<group>"; };
-		152AA0DA1A4BE5CC00F059B3 /* SimpleObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleObserver.m; sourceTree = "<group>"; };
 		152AA0DC1A4BE5CC00F059B3 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		152AA0DD1A4BE5CC00F059B3 /* NetWorkDownLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkDownLoad.h; sourceTree = "<group>"; };
 		152AA0DE1A4BE5CC00F059B3 /* NetWorkDownLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkDownLoad.m; sourceTree = "<group>"; };
@@ -319,7 +318,11 @@
 		152AA1F81A4BED8B00F059B3 /* ConfigManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManage.h; sourceTree = "<group>"; };
 		152AA1F91A4BED8B00F059B3 /* ConfigManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigManage.m; sourceTree = "<group>"; };
 		152AA1FB1A4BEE8000F059B3 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		152AA2021A4C01D500F059B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Common_Localizable.strings; sourceTree = "<group>"; };
+		152AA2051A4C121500F059B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Basic_Localizable.strings; sourceTree = "<group>"; };
+		152AB8D41A4CFB2100365D67 /* DeviceOrientationListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceOrientationListener.h; sourceTree = "<group>"; };
+		152AB8D51A4CFB2100365D67 /* DeviceOrientationListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceOrientationListener.m; sourceTree = "<group>"; };
+		152AB8D71A4D00F900365D67 /* BaseWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWindow.h; sourceTree = "<group>"; };
+		152AB8D81A4D00F900365D67 /* BaseWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +433,8 @@
 				152AA0941A4BBE2000F059B3 /* VertivalController.m */,
 				152AA0961A4BC09500F059B3 /* HorizontalController.h */,
 				152AA0971A4BC09500F059B3 /* HorizontalController.m */,
+				152AB8D71A4D00F900365D67 /* BaseWindow.h */,
+				152AB8D81A4D00F900365D67 /* BaseWindow.m */,
 			);
 			path = BaseController;
 			sourceTree = "<group>";
@@ -518,6 +523,7 @@
 		152AA0C71A4BE5CC00F059B3 /* YCTools */ = {
 			isa = PBXGroup;
 			children = (
+				152AB8D31A4CFB0800365D67 /* DeviceOrientationListener */,
 				152AA0C81A4BE5CC00F059B3 /* EntityManager */,
 				152AA0CF1A4BE5CC00F059B3 /* Graphics */,
 				152AA0D61A4BE5CC00F059B3 /* KVO+KVC */,
@@ -560,8 +566,6 @@
 			children = (
 				152AA0D71A4BE5CC00F059B3 /* ObserverListner.h */,
 				152AA0D81A4BE5CC00F059B3 /* ObserverListner.m */,
-				152AA0D91A4BE5CC00F059B3 /* SimpleObserver.h */,
-				152AA0DA1A4BE5CC00F059B3 /* SimpleObserver.m */,
 			);
 			path = "KVO+KVC";
 			sourceTree = "<group>";
@@ -817,9 +821,18 @@
 		152AA1FD1A4C01A700F059B3 /* zh-Hans.lproj */ = {
 			isa = PBXGroup;
 			children = (
-				152AA2011A4C01D500F059B3 /* Common_Localizable.strings */,
+				152AA2041A4C121500F059B3 /* Basic_Localizable.strings */,
 			);
 			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
+		152AB8D31A4CFB0800365D67 /* DeviceOrientationListener */ = {
+			isa = PBXGroup;
+			children = (
+				152AB8D41A4CFB2100365D67 /* DeviceOrientationListener.h */,
+				152AB8D51A4CFB2100365D67 /* DeviceOrientationListener.m */,
+			);
+			path = DeviceOrientationListener;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -903,8 +916,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				152AA2031A4C01D500F059B3 /* Common_Localizable.strings in Resources */,
 				152AA0741A4BA15500F059B3 /* LaunchScreen.xib in Resources */,
+				152AA2061A4C121500F059B3 /* Basic_Localizable.strings in Resources */,
 				152AA0711A4BA15500F059B3 /* Images.xcassets in Resources */,
 				152AA0EE1A4BE5CC00F059B3 /* MJRefresh.bundle in Resources */,
 			);
@@ -965,11 +978,11 @@
 				152AA1E41A4BE95700F059B3 /* HtmlTidy.m in Sources */,
 				152AA1241A4BE6C700F059B3 /* NSString+Expand.m in Sources */,
 				152AA0661A4BA15500F059B3 /* main.m in Sources */,
+				152AB8D91A4D00F900365D67 /* BaseWindow.m in Sources */,
 				152AA09B1A4BC97300F059B3 /* HViewController.m in Sources */,
 				152AA1E31A4BE95700F059B3 /* GDataXMLNode.m in Sources */,
 				152AA1061A4BE5CC00F059B3 /* ReachabilityListener.m in Sources */,
 				152AA1F01A4BE95700F059B3 /* zip.c in Sources */,
-				152AA1031A4BE5CC00F059B3 /* SimpleObserver.m in Sources */,
 				152AA1211A4BE6C700F059B3 /* GDataXMLElement+expanded.m in Sources */,
 				152AA0F51A4BE5CC00F059B3 /* UIView+Extension.m in Sources */,
 				152AA10B1A4BE5EE00F059B3 /* AsyncImageView.m in Sources */,
@@ -1000,6 +1013,7 @@
 				152AA1011A4BE5CC00F059B3 /* GraphicsThumb.m in Sources */,
 				152AA1251A4BE6C700F059B3 /* UIButton+Expand.m in Sources */,
 				152AA1DC1A4BE95700F059B3 /* streamio.c in Sources */,
+				152AB8D61A4CFB2100365D67 /* DeviceOrientationListener.m in Sources */,
 				152AA1081A4BE5CC00F059B3 /* SynOperate.m in Sources */,
 				152AA0981A4BC09500F059B3 /* HorizontalController.m in Sources */,
 				152AA1261A4BE6C700F059B3 /* UIColor+Expand.m in Sources */,
@@ -1045,12 +1059,12 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		152AA2011A4C01D500F059B3 /* Common_Localizable.strings */ = {
+		152AA2041A4C121500F059B3 /* Basic_Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				152AA2021A4C01D500F059B3 /* zh-Hans */,
+				152AA2051A4C121500F059B3 /* zh-Hans */,
 			);
-			name = Common_Localizable.strings;
+			name = Basic_Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1215,6 +1229,7 @@
 				152AA0851A4BA15500F059B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		152AA0861A4BA15500F059B3 /* Build configuration list for PBXNativeTarget "CommonTests" */ = {
 			isa = XCConfigurationList;
@@ -1223,6 +1238,7 @@
 				152AA0881A4BA15500F059B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

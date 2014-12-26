@@ -8,7 +8,7 @@
 
 #import "MovableView.h"
 #import "UIView+Expand.h"
-
+#import "DeviceOrientationListener.h"
 @interface VendorMoveView(){
     CallBackVendorTouchOpt callbackBegin;
     CallBackVendorTouchOpt callbackMove;
@@ -85,6 +85,41 @@
     if (_touchView) {
         UITouch *touch = touches.anyObject;
         CGPoint point = [touch locationInView: _orgView];
+        float widhtOrg;
+        float heightOrg;
+        switch ([DeviceOrientationListener getSingleInstance].orientation) {
+                // Device oriented vertically, home button on the bottom
+            case UIDeviceOrientationPortrait:{
+                widhtOrg = _orgView.frameWidth;
+                heightOrg = _orgView.frameHeight;
+            }
+                break;
+                // Device oriented vertically, home button on the top
+            case UIDeviceOrientationPortraitUpsideDown:{
+                widhtOrg = _orgView.frameWidth;
+                heightOrg = _orgView.frameHeight;
+            }
+                break;
+                // Device oriented horizontally, home button on the right
+            case UIDeviceOrientationLandscapeLeft:{
+                widhtOrg = _orgView.frameHeight;
+                heightOrg = _orgView.frameWidth;
+            }
+                break;
+                // Device oriented horizontally, home button on the left
+            case UIDeviceOrientationLandscapeRight:{
+                widhtOrg = _orgView.frameHeight;
+                heightOrg = _orgView.frameWidth;
+            }
+                break;
+            default:{
+                widhtOrg = _orgView.frameWidth;
+                heightOrg = _orgView.frameHeight;
+            }
+                break;
+        }
+        
+        
         CGRect r = _touchView.frame;
         r.origin.x += point.x - _offPoint.x;
         r.origin.y += point.y - _offPoint.y;
@@ -94,11 +129,11 @@
         if (r.origin.y<0) {
             r.origin.y = 0;
         }
-        if (r.origin.x>_orgView.frame.size.width-r.size.width) {
-            r.origin.x = _orgView.frame.size.width-r.size.width;
+        if (r.origin.x>widhtOrg-r.size.width) {
+            r.origin.x = widhtOrg-r.size.width;
         }
-        if (r.origin.y>_orgView.frame.size.height-r.size.height) {
-            r.origin.y = _orgView.frame.size.height-r.size.height;
+        if (r.origin.y>heightOrg-r.size.height) {
+            r.origin.y = heightOrg-r.size.height;
         }
         _touchView.frame = r;
         _offPoint = point;

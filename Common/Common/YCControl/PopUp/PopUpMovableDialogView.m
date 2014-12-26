@@ -47,7 +47,7 @@ static float STATIC_ALERT_MESSAGE_OFFY;
 +(void) initialize{
     [super initialize];
     UIFont *tempfont = [UIFont systemFontOfSize:1];
-    STATIC_DIALOG_BACKGROUND_COLOR = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    STATIC_DIALOG_BACKGROUND_COLOR = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     STATIC_DIALOG_BUTTON_HEIGHT=50.0f;
     
     STATIC_DIALOG_BUTTON_NAME_FONT = [UIFont systemFontOfSize:[Utils getFontSizeWithHeight:STATIC_DIALOG_BUTTON_HEIGHT*0.6 fontName:tempfont.fontName]];
@@ -92,6 +92,7 @@ static float STATIC_ALERT_MESSAGE_OFFY;
     _buttonNameColorNormal = STATIC_DIALOG_BUTTON_TITLECOLOR_NORMAL;
     _buttonHeight = STATIC_DIALOG_BUTTON_HEIGHT;
     _borderColor = STATIC_DIALOG_BORDER_COLOR;
+    _buttonNameFont = STATIC_DIALOG_BUTTON_NAME_FONT;
 }
 
 
@@ -115,7 +116,7 @@ static float STATIC_ALERT_MESSAGE_OFFY;
         va_end(_list);
     }
     [dialogView setDialogContext:alert blockOnclick:onclickBlock buttonNames:buttonNames];
-    return nil;
+    return dialogView;
 }
 
 
@@ -254,6 +255,7 @@ static float STATIC_ALERT_MESSAGE_OFFY;
     [button setBackgroundImage:[UIImage imageWithColor:_buttonBgColorHighLight] forState:UIControlStateHighlighted];
     button.frame = CGRectMake(0, 0, width, _buttonHeight);
     [button autoresizingMask_TLRW];
+    button.titleLabel.font = _buttonNameFont;
     [button setTitle:name forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onclickButton:)];
     return button;
@@ -283,6 +285,9 @@ static float STATIC_ALERT_MESSAGE_OFFY;
 
 -(void) show{
     [self setAllView];
+    if ([self.dialogContext isKindOfClass:[PopUpAlert class]]) {
+        self.dialogContext.backgroundColor = _buttonBgColorNormal;
+    }
     [super show];
 }
 
@@ -329,7 +334,7 @@ static float STATIC_ALERT_MESSAGE_OFFY;
     self.backgroundColor = STATIC_DIALOG_BACKGROUND_COLOR;
     _titleColor = STATIC_ALERT_TITLE_COLOR;
     _messageColor = STATIC_ALERT_MESSAGE_COLOR;
-    _titleFont = STATIC_ALERT_MESSAGE_FONT;
+    _titleFont = STATIC_ALERT_TITLE_FONT;
     _messageFont = STATIC_ALERT_MESSAGE_FONT;
     _titleOffy = STATIC_ALERT_TITLE_OFFY;
     _messageOffy = STATIC_ALERT_MESSAGE_OFFY;
@@ -354,10 +359,14 @@ static float STATIC_ALERT_MESSAGE_OFFY;
     _messageLable.text = message;
     
     _titleLable.frameHeight = 9999;
+    _titleLable.frameWidth = self.frameWidth - 20;
     [_titleLable automorphismHeight];
+    _titleLable.frameX = (self.frameWidth-_titleLable.frameWidth)/2;
     
     _messageLable.frameHeight = 9999;
+    _messageLable.frameWidth = self.frameWidth - 20;
     [_messageLable automorphismHeight];
+    _messageLable.frameX = (self.frameWidth-_messageLable.frameWidth)/2;
     _titleLable.frameY = _titleOffy;
     _messageLable.frameY = _titleLable.frameHeight+_titleLable.frameY+_messageOffy;
     self.frameHeight = _messageLable.frameHeight+_messageLable.frameY+_messageOffy;

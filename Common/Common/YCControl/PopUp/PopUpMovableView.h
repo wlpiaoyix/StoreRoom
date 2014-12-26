@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MovableView.h"
+#import "DeviceOrientationListener.h"
 @class PopUpMovableView;
 
 typedef void (^dispatch_block_popup)(PopUpMovableView* vmv);
@@ -17,7 +18,7 @@ enum PopUpMovableViewViewAnimation {
     PopUpMovableViewAnimationSize
 };
 
-@interface PopUpMovableView : UIView
+@interface PopUpMovableView : UIView<DeviceOrientationListenerDelegate>
 //弹出框
 @property (nonatomic,strong,readonly) VendorMoveView *viewShow;
 //弹出框所属的View

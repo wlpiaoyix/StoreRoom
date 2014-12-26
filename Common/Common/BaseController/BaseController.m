@@ -7,7 +7,7 @@
 //
 
 #import "BaseController.h"
-#import "AppDelegate.h"
+#import "DeviceOrientationListener.h"
 static UIDeviceOrientation STATIC_deviceOrientation;
 static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
 @interface BaseController ()
@@ -19,7 +19,6 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.deviceOrientation = UIDeviceOrientationUnknown;
-    
     if([systemVersion floatValue]>=7.0f)
     {
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -30,25 +29,19 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    NSLog(@"%@",NSStringFromClass([self class]));
-    if (self==[Utils getCurrentController]&&[[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        SEL selector = NSSelectorFromString(@"setOrientation:");
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
-        [invocation setSelector:selector];
-        [invocation setTarget:[UIDevice currentDevice]];
+    if(self.navigationController.navigationBar.hidden==NO){
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.118 green:0.580 blue:0.129 alpha:1];
+        
+    }
+    if (self==[Utils getCurrentController]) {
         int val = _deviceOrientation;
         if (_toInterfaceOrientation!=UIInterfaceOrientationUnknown) {
             val = _toInterfaceOrientation;
         }
         STATIC_deviceOrientation = val;
         STATIC_supportInterfaceOrientation = _supportInterfaceOrientation;
-        [invocation setArgument:&val atIndex:2];
-        [invocation invoke];
-        [UIViewController attemptRotationToDeviceOrientation];//这句是关键
+        [DeviceOrientationListener attemptRotationToDeviceOrientation:val];
     }
-}
--(void) viewWillDisappear:(BOOL)animated{
-    NSLog(@"%@",NSStringFromClass([self class]));
 }
 
 
@@ -188,11 +181,13 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
 //⇒ 重写父类方法旋转开始和结束
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation) toInterfaceOrientation duration:(NSTimeInterval)duration{
     _toInterfaceOrientation = toInterfaceOrientation;
+    [DeviceOrientationListener getSingleInstance].duration = duration;
 }
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation) fromInterfaceOrientation{
     _fromInterfaceOrientation = fromInterfaceOrientation;
 }
 //⇐
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -202,10 +197,6 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
     [Utils setStatusBarHidden:flag];
     return  flag;
 }
-
-
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

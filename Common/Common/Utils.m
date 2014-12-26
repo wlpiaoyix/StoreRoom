@@ -11,6 +11,7 @@
 #import "PopUpMovableDialogView.h"
 #import "NSString+Expand.h"
 #import "LoadingView.h"
+#import "BaseWindow.h"
 static bool STATIC_SYN_INITPARAM;
 
 
@@ -138,7 +139,11 @@ long timeInterval(){
     return result;
 }
 
-+(void) setRootController:(UIViewController*) controller window:(UIWindow *)window{
++(UIWindow*) setRootController:(UIViewController*) controller{
+    UIWindow *window = [self getWindow];
+    if (!window) {
+        window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    }
     UINavigationController *navnext = [[BaseNavigationController alloc]initWithRootViewController:controller];
     CGRect bounds = [UIScreen mainScreen].bounds;
     navnext.view.frame = bounds;
@@ -146,7 +151,7 @@ long timeInterval(){
     window.rootViewController = navnext;
     window.backgroundColor = [UIColor clearColor];
     [window makeKeyAndVisible];
-    
+    return window;
 }
 +(void) setStatusBarHidden:(BOOL) barHidden{
     if ([[self getWindow].rootViewController isKindOfClass:[UINavigationController class]]) {
@@ -208,7 +213,8 @@ long timeInterval(){
 
 //==>交互UI
 +(void) showAlert:(NSString*) message Title:(NSString*) title{
-    [[PopUpDialogVendorView alertWithMessage:message title:[NSString isEnabled:title]?title:NSLocalizedString(@"popup_default_title", nil) onclickBlock:nil buttonNames:NSLocalizedString(@"popup_default_confirm_name", nil),nil] show];
+    PopUpDialogVendorView *alert = [PopUpDialogVendorView alertWithMessage:message title:[NSString isEnabled:title]?title:NSLocalizedStringFromTable(@"popup_default_title", @"Basic_Localizable", nil) onclickBlock:nil buttonNames:NSLocalizedStringFromTable(@"popup_default_confirm_name", @"Basic_Localizable", nil),nil];
+    [alert show];
 }
 +(void) showLoading:(NSString*) message{
     [LoadingView show:message];

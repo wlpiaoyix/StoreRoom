@@ -1,10 +1,11 @@
 /* 
-  Localizable.strings
-  ShiShang
+  Basic_Localizable.strings
+  Common
 
-  Created by wlpiaoyi on 14/12/7.
+  Created by wlpiaoyi on 14/12/25.
   Copyright (c) 2014年 wlpiaoyi. All rights reserved.
 */
+
 "activity_data_loading" = "请等待...";
 "popup_default_title" = "温馨提示";
 "popup_default_confirm_name" = "确定";
