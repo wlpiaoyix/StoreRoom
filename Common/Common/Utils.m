@@ -12,6 +12,8 @@
 #import "NSString+Expand.h"
 #import "LoadingView.h"
 #import "BaseWindow.h"
+#import <AudioToolbox/AudioToolbox.h>
+
 static bool STATIC_SYN_INITPARAM;
 
 
@@ -76,6 +78,7 @@ long timeInterval(){
  isCreated 是否创建文件夹
  */
 +(BOOL) fileExistsAtPath:(NSString*)path isDirectory:(BOOL*) isDirectory isCreated:(BOOL) isCreated{
+    if (![NSString isEnabled:path]) return false;
     NSFileManager *f = [NSFileManager defaultManager];
     if (!isDirectory) {
         BOOL b;
@@ -249,5 +252,38 @@ long timeInterval(){
     }
     return success;
 }
+
++(BOOL) soundWithPath:(NSString*) path isShake:(BOOL) isShake{
+    if(![self fileExistsAtPath:path isDirectory:nil isCreated:NO])return false;
+    
+    SystemSoundID shortSound;
+    // Create a file URL with this path
+    NSURL *url = [NSURL fileURLWithPath:path];
+    
+    // Register sound file located at that URL as a system sound
+    OSStatus err = AudioServicesCreateSystemSoundID((__bridge CFURLRef)url,
+                                                    &shortSound);
+    if (err != kAudioServicesNoError){
+        NSLog(@"Could not load %@, error code: %d", url, (int)err);
+        return false;
+    }else{
+        /*添加音频结束时的回调*/
+        AudioServicesAddSystemSoundCompletion(shortSound, NULL, NULL, SoundFinished,(__bridge void *)(url));
+        AudioServicesPlaySystemSound(shortSound);
+        if(isShake)AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+//        CFRunLoopRun();
+    }
+    return true;
+    
+}
+
+//当音频播放完毕会调用这个函数
+static void SoundFinished(SystemSoundID soundID,void* sample){
+    /*播放全部结束，因此释放所有资源 */
+    AudioServicesDisposeSystemSoundID(soundID);
+//    CFRelease(sample);
+//    CFRunLoopStop(CFRunLoopGetCurrent());
+}
+
 
 @end

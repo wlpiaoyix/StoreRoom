@@ -7,7 +7,7 @@
 //
 
 #import "Utils.h"
-#import "NetWork.h"
+#import "HttpUtil.h"
 #import "NSDate+Expand.h"
 #import "UIColor+Expand.h"
 #import "UIImage+Expand.h"

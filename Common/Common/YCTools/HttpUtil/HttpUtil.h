@@ -1,31 +1,31 @@
 //
-//  NetWorkRequest.h
+//  HttpUtilRequest.h
 //  Common
 //
 //  Created by wlpiaoyi on 14-10-7.
 //  Copyright (c) 2014年 wlpiaoyi. All rights reserved.
 //
 
-#define NetWorkOutTime 30
+#define HttpUtilOutTime 30
 
 #import <Foundation/Foundation.h>
 
 
-@protocol NetWorkConnectionDataDelegate;
+@protocol HttpUtilConnectionDataDelegate;
 
 //http请求反馈
-typedef void (^CallBackNetWorkHTTP)(id data,NSDictionary* userInfo);
+typedef void (^CallBackHttpUtilRequest)(id data,NSDictionary* userInfo);
 //下载请求完成时反馈
-typedef void (^CallBackNetWorkDownLoaded)(NSString* relativePath ,NSString* downLoadKey ,NSDictionary* userInfo);
+typedef void (^CallBackHttpUtilDownLoaded)(NSString* relativePath ,NSString* downLoadKey ,NSDictionary* userInfo);
 //下载请求恢复数据反馈
-typedef NSData* (^CallBackNetWorkDownLoadResume)(NSString* downLoadKey ,NSDictionary* userInfo);
+typedef NSData* (^CallBackHttpUtilDownLoadResume)(NSString* downLoadKey ,NSDictionary* userInfo);
 //下载请求暂停数据反馈
-typedef void (^CallBackNetWorkDowndLoadSuspend)(NSData *resumeData ,NSString *downLoadKey);
-typedef void (^CallBackNetWorkUpLoading)(NSDictionary* userInfo);
+typedef void (^CallBackHttpUtilDowndLoadSuspend)(NSData *resumeData ,NSString *downLoadKey);
+typedef void (^CallBackHttpUtilUpLoading)(NSDictionary* userInfo);
 /**
  HTTP数据请求
  */
-@protocol NetWorkHTTPDelegate <NSObject>
+@protocol HttpUtilRequestDelegate <NSObject>
 /**
  用户参数信息
  */
@@ -54,11 +54,11 @@ typedef void (^CallBackNetWorkUpLoading)(NSDictionary* userInfo);
 /**
  http请求成功后的反馈
  */
--(void) setSuccessCallBack:(CallBackNetWorkHTTP) callback;
+-(void) setSuccessCallBack:(CallBackHttpUtilRequest) callback;
 /**
  http请求失败后的反馈
  */
--(void) setFaildCallBack:(CallBackNetWorkHTTP) callback;
+-(void) setFaildCallBack:(CallBackHttpUtilRequest) callback;
 -(void) cancel;
 //@optional
 //-(void) startSynRequest;
@@ -66,19 +66,19 @@ typedef void (^CallBackNetWorkUpLoading)(NSDictionary* userInfo);
 /**
  数据下载
  */
-@protocol NetWorkDownLoadDelegate <NSObject>
+@protocol HttpUtilDownLoadDelegate <NSObject>
 //下载地址
 @property (nonatomic,strong) NSString* downLoadString;
 //特殊用途的标示符
 @property (nonatomic,strong) NSString* downLoadKey;
 //用户数据
 @property (nonatomic,strong) id userInfo;
-@property (nonatomic,assign) id<NetWorkConnectionDataDelegate> delegate;
--(void) setDownLoadedSuccessCallBack:(CallBackNetWorkDownLoaded) callback;
--(void) setDownLoadingFaildCallBack:(CallBackNetWorkDownLoaded) callback;
--(void) setDownLoadingSuspendCallBack:(CallBackNetWorkDowndLoadSuspend) callback;
--(void) setDownLoadingCancelCallBack:(CallBackNetWorkDowndLoadSuspend) callback;
--(void) setDownLoadedResumeDataCallBack:(CallBackNetWorkDownLoadResume) callback;
+@property (nonatomic,assign) id<HttpUtilConnectionDataDelegate> delegate;
+-(void) setDownLoadedSuccessCallBack:(CallBackHttpUtilDownLoaded) callback;
+-(void) setDownLoadingFaildCallBack:(CallBackHttpUtilDownLoaded) callback;
+-(void) setDownLoadingSuspendCallBack:(CallBackHttpUtilDowndLoadSuspend) callback;
+-(void) setDownLoadingCancelCallBack:(CallBackHttpUtilDowndLoadSuspend) callback;
+-(void) setDownLoadedResumeDataCallBack:(CallBackHttpUtilDownLoadResume) callback;
 -(BOOL) resumeDownLoad;
 -(BOOL) suspendDownLoad;
 -(BOOL) cancelDownLoad;
@@ -86,10 +86,10 @@ typedef void (^CallBackNetWorkUpLoading)(NSDictionary* userInfo);
 /**
  数据上传
  */
-@protocol NetWorkUpLoadDelegate <NSObject>
+@protocol HttpUtilUpLoadDelegate <NSObject>
 -(void) setUpLoadString:(NSString*) upLoadString;
--(void) setUpLoadingSuccessCallBack:(CallBackNetWorkUpLoading) callback;
--(void) setUpLoadingFaildCallBack:(CallBackNetWorkUpLoading) callback;
+-(void) setUpLoadingSuccessCallBack:(CallBackHttpUtilUpLoading) callback;
+-(void) setUpLoadingFaildCallBack:(CallBackHttpUtilUpLoading) callback;
 -(void) resumeUpLoad;
 -(void) suspendUpLoad;
 -(void) cancelUpLoad;
@@ -97,7 +97,7 @@ typedef void (^CallBackNetWorkUpLoading)(NSDictionary* userInfo);
 /**
  数据连接协议
  */
-@protocol NetWorkConnectionDataDelegate <NSObject>
+@protocol HttpUtilConnectionDataDelegate <NSObject>
 @required
 -(void)connection:(unsigned long long int) totalBytes;
 -(void)connection:(id)connection didFailWithError:(NSError *)error;

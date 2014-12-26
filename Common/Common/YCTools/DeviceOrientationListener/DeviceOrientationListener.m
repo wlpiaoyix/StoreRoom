@@ -25,6 +25,8 @@ static id synDeviceOrientationListener;
         UIDevice *device = [UIDevice currentDevice]; //Get the device object
         [device beginGeneratingDeviceOrientationNotifications]; //Tell it to start monitoring the accelerometer for orientation
         
+        self.soundPath = [[NSBundle mainBundle] pathForResource:@"device_orientation"
+                                                              ofType:@"wav"];
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter]; //Get the notification centre for the app
         [nc addObserver:self selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification object:device];
         self.arrayListeners = [NSMutableArray new];
@@ -47,7 +49,7 @@ static id synDeviceOrientationListener;
  */
 +(void) attemptRotationToDeviceOrientation:(UIDeviceOrientation) deviceOrientation{
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
-        [self getSingleInstance]->_orientation = deviceOrientation;
+        [[self getSingleInstance] setOrientation:deviceOrientation];
         SEL selector = NSSelectorFromString(@"setOrientation:");
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
         [invocation setSelector:selector];
@@ -82,11 +84,12 @@ static id synDeviceOrientationListener;
         if (!(all&cur)) {
             return;
         }
-        all = [[Utils getCurrentController] supportedInterfaceOrientations];
+        supportedOrientations = [[Utils getCurrentController] supportedInterfaceOrientations];
+        all = supportedOrientations;
         if (!(all&cur)) {
             return;
         }
-        _orientation = orientation;
+        [self setOrientation:orientation];
         for (id<DeviceOrientationListenerDelegate> listener in self.arrayListeners) {
             switch (_orientation) {
                     // Device oriented vertically, home button on the bottom
@@ -115,6 +118,13 @@ static id synDeviceOrientationListener;
             }
         }
     }
+}
+
+-(void) setOrientation:(UIDeviceOrientation)orientation{
+    if (_orientation!=orientation) {
+        [Utils soundWithPath:self.soundPath isShake:YES];
+    }
+    _orientation = orientation;
 }
 
 -(void) dealloc{

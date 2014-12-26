@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.deviceOrientation = UIDeviceOrientationPortrait;
-    self.supportInterfaceOrientation = UIInterfaceOrientationMaskPortrait;
+    self.supportInterfaceOrientation = UIInterfaceOrientationMaskPortrait|UIInterfaceOrientationMaskPortraitUpsideDown;
     // Do any additional setup after loading the view.
 }
 

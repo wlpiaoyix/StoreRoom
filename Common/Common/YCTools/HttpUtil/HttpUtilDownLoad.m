@@ -1,23 +1,23 @@
 //
-//  NetWorkDownLoad.m
+//  HttpUtilDownLoad.m
 //  Common
 //
 //  Created by wlpiaoyi on 14-10-18.
 //  Copyright (c) 2014年 wlpiaoyi. All rights reserved.
 //
 
-#import "NetWorkDownLoad.h"
+#import "HttpUtilDownLoad.h"
 #import "Common.h"
 #define CONFIGURATIONSESSIONBGSUFFIX @"org.piaoyi.backgroundsession"
 static id synonceToken;
 
-@interface NetWorkDownLoad(){
+@interface HttpUtilDownLoad(){
 @private
-    CallBackNetWorkDownLoaded callbackDownloaded;
-    CallBackNetWorkDownLoadResume callbackDownloadResume;
-    CallBackNetWorkDownLoaded callbackDownloadFailed;
-    CallBackNetWorkDowndLoadSuspend callbackDownloadSuspend;
-    CallBackNetWorkDowndLoadSuspend callbackDownloadCancel;
+    CallBackHttpUtilDownLoaded callbackDownloaded;
+    CallBackHttpUtilDownLoadResume callbackDownloadResume;
+    CallBackHttpUtilDownLoaded callbackDownloadFailed;
+    CallBackHttpUtilDowndLoadSuspend callbackDownloadSuspend;
+    CallBackHttpUtilDowndLoadSuspend callbackDownloadCancel;
     
     NSURLSession *sessionBackground;
     NSURLSessionDownloadTask *downloadTask;
@@ -29,7 +29,7 @@ static id synonceToken;
     id syndelegate;
 }
 @end
-@implementation NetWorkDownLoad
+@implementation HttpUtilDownLoad
 @synthesize downLoadKey,downLoadString,userInfo,delegate;
 
 +(void) initialize{
@@ -41,22 +41,22 @@ static id synonceToken;
     }
     return self;
 }
--(void) setDownLoadedSuccessCallBack:(CallBackNetWorkDownLoaded) callback{
+-(void) setDownLoadedSuccessCallBack:(CallBackHttpUtilDownLoaded) callback{
     callbackDownloaded = callback;
 }
--(void) setDownLoadedResumeDataCallBack:(CallBackNetWorkDownLoadResume) callback{
+-(void) setDownLoadedResumeDataCallBack:(CallBackHttpUtilDownLoadResume) callback{
     callbackDownloadResume = callback;
 }
--(void) setDownLoadingFaildCallBack:(CallBackNetWorkDownLoaded) callback{
+-(void) setDownLoadingFaildCallBack:(CallBackHttpUtilDownLoaded) callback{
     callbackDownloadFailed = callback;
 }
--(void) setDownLoadingSuspendCallBack:(CallBackNetWorkDowndLoadSuspend) callback{
+-(void) setDownLoadingSuspendCallBack:(CallBackHttpUtilDowndLoadSuspend) callback{
     callbackDownloadSuspend = callback;
 }
--(void) setDownLoadingCancelCallBack:(CallBackNetWorkDowndLoadSuspend) callback{
+-(void) setDownLoadingCancelCallBack:(CallBackHttpUtilDowndLoadSuspend) callback{
     callbackDownloadCancel = callback;
 }
--(void) setDelegate:(id<NetWorkConnectionDataDelegate>)_delegate_{
+-(void) setDelegate:(id<HttpUtilConnectionDataDelegate>)_delegate_{
     @synchronized(syndelegate){
         delegate = _delegate_;
         if (delegate) {

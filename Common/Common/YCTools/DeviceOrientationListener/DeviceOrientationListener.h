@@ -27,6 +27,7 @@
  */
 +(void) attemptRotationToDeviceOrientation:(UIDeviceOrientation) deviceOrientation;
 @property(nonatomic,readonly) UIDeviceOrientation orientation;
+@property(nonatomic,strong) NSString *soundPath;
 @property(nonatomic) float duration;
 -(void) addListener:(id<DeviceOrientationListenerDelegate>) listener;
 -(void) removeListenser:(id<DeviceOrientationListenerDelegate>) listener;

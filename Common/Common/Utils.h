@@ -69,5 +69,7 @@ long timeInterval();
 //<==
 //添加不向服务器备份的Document下的路径
 +(BOOL)addSkipBackupAttributeToItemAtURL:(NSString *)url;
+//简易发声
++(BOOL) soundWithPath:(NSString*) path isShake:(BOOL) isShake;
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 wlpiaoyi. All rights reserved.
 //
 
-#import "NetWorkHTTP.h"
+#import "HttpUtilRequest.h"
 #import "JSON.h"
 //==>传输方法
 #define GET @"GET"
@@ -17,10 +17,10 @@
 #define HTTP_HEAD_KEY_ContentType @"Content-Type"
 #define HTTP_HEAD_VALUE_ContentType_JSON  @"application/json"
 
-@interface NetWorkHTTP(){
+@interface HttpUtilRequest(){
 @private
-    CallBackNetWorkHTTP callBackSuccess;
-    CallBackNetWorkHTTP callBackFaild;
+    CallBackHttpUtilRequest callBackSuccess;
+    CallBackHttpUtilRequest callBackFaild;
 }
 @property (nonatomic) NSStringEncoding encoding;
 @property (nonatomic,strong,readonly) id userInfo;
@@ -31,7 +31,7 @@
 @property (nonatomic,strong) NSMutableData *data;
 @end
 
-@implementation NetWorkHTTP
+@implementation HttpUtilRequest
 -(id) init{
     if (self=[super init]) {
         self.encoding = NSUTF8StringEncoding;
@@ -49,26 +49,26 @@
 -(void) setRequestString:(NSString*) requestString{
     _requestString= [requestString stringByAddingPercentEscapesUsingEncoding:self.encoding];
 }
--(void) setSuccessCallBack:(CallBackNetWorkHTTP) callback{
+-(void) setSuccessCallBack:(CallBackHttpUtilRequest) callback{
     callBackSuccess = callback;
 }
--(void) setFaildCallBack:(CallBackNetWorkHTTP) callback{
+-(void) setFaildCallBack:(CallBackHttpUtilRequest) callback{
     callBackFaild = callback;
 }
 -(void) addRequestHeadValue:(NSDictionary*) dic{
     [_httpHeaderFields setValuesForKeysWithDictionary:dic];
 }
 -(void) requestPOST:(NSDictionary*) params{
-    [self requestPOST:params OutTime:NetWorkOutTime];
+    [self requestPOST:params OutTime:HttpUtilOutTime];
 }
 -(void) requestPUT:(NSDictionary*) params{
-    [self requestPUT:params OutTime:NetWorkOutTime];
+    [self requestPUT:params OutTime:HttpUtilOutTime];
 }
 -(void) requestGET:(NSDictionary*) params{
-    [self requestGET:params OutTime:NetWorkOutTime];
+    [self requestGET:params OutTime:HttpUtilOutTime];
 }
 -(void) requestDELETE:(NSDictionary*) params{
-    [self requestDELETE:params OutTime:NetWorkOutTime];
+    [self requestDELETE:params OutTime:HttpUtilOutTime];
 }
 -(void) requestPOST:(NSDictionary*) params OutTime:(int) outTime{
     _request = [self createDataRequest:params OutTime:outTime];

@@ -42,8 +42,6 @@
 		152AA1001A4BE5CC00F059B3 /* GraphicsLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0D31A4BE5CC00F059B3 /* GraphicsLayer.m */; };
 		152AA1011A4BE5CC00F059B3 /* GraphicsThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0D51A4BE5CC00F059B3 /* GraphicsThumb.m */; };
 		152AA1021A4BE5CC00F059B3 /* ObserverListner.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0D81A4BE5CC00F059B3 /* ObserverListner.m */; };
-		152AA1041A4BE5CC00F059B3 /* NetWorkDownLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0DE1A4BE5CC00F059B3 /* NetWorkDownLoad.m */; };
-		152AA1051A4BE5CC00F059B3 /* NetWorkHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0E01A4BE5CC00F059B3 /* NetWorkHTTP.m */; };
 		152AA1061A4BE5CC00F059B3 /* ReachabilityListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0E31A4BE5CC00F059B3 /* ReachabilityListener.m */; };
 		152AA1071A4BE5CC00F059B3 /* SkinDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0E61A4BE5CC00F059B3 /* SkinDictionary.m */; };
 		152AA1081A4BE5CC00F059B3 /* SynOperate.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA0E91A4BE5CC00F059B3 /* SynOperate.m */; };
@@ -105,9 +103,12 @@
 		152AA1F71A4BEB9200F059B3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 152AA1F61A4BEB9200F059B3 /* libz.dylib */; };
 		152AA1FA1A4BED8B00F059B3 /* ConfigManage.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AA1F91A4BED8B00F059B3 /* ConfigManage.m */; };
 		152AA1FC1A4BEE8000F059B3 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 152AA1FB1A4BEE8000F059B3 /* libsqlite3.dylib */; };
-		152AA2061A4C121500F059B3 /* Basic_Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152AA2041A4C121500F059B3 /* Basic_Localizable.strings */; };
 		152AB8D61A4CFB2100365D67 /* DeviceOrientationListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB8D51A4CFB2100365D67 /* DeviceOrientationListener.m */; };
 		152AB8D91A4D00F900365D67 /* BaseWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB8D81A4D00F900365D67 /* BaseWindow.m */; };
+		152AB8E41A4D530F00365D67 /* HttpUtilDownLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB8E31A4D530F00365D67 /* HttpUtilDownLoad.m */; };
+		152AB8E71A4D534000365D67 /* HttpUtilRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB8E61A4D534000365D67 /* HttpUtilRequest.m */; };
+		152AB8EC1A4D586A00365D67 /* Basic_Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152AB8EA1A4D586A00365D67 /* Basic_Localizable.strings */; };
+		152AB8EF1A4D59B600365D67 /* device_orientation.wav in Resources */ = {isa = PBXBuildFile; fileRef = 152AB8EE1A4D59B600365D67 /* device_orientation.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,11 +192,6 @@
 		152AA0D51A4BE5CC00F059B3 /* GraphicsThumb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphicsThumb.m; sourceTree = "<group>"; };
 		152AA0D71A4BE5CC00F059B3 /* ObserverListner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObserverListner.h; sourceTree = "<group>"; };
 		152AA0D81A4BE5CC00F059B3 /* ObserverListner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObserverListner.m; sourceTree = "<group>"; };
-		152AA0DC1A4BE5CC00F059B3 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
-		152AA0DD1A4BE5CC00F059B3 /* NetWorkDownLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkDownLoad.h; sourceTree = "<group>"; };
-		152AA0DE1A4BE5CC00F059B3 /* NetWorkDownLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkDownLoad.m; sourceTree = "<group>"; };
-		152AA0DF1A4BE5CC00F059B3 /* NetWorkHTTP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkHTTP.h; sourceTree = "<group>"; };
-		152AA0E01A4BE5CC00F059B3 /* NetWorkHTTP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorkHTTP.m; sourceTree = "<group>"; };
 		152AA0E21A4BE5CC00F059B3 /* ReachabilityListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityListener.h; sourceTree = "<group>"; };
 		152AA0E31A4BE5CC00F059B3 /* ReachabilityListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityListener.m; sourceTree = "<group>"; };
 		152AA0E51A4BE5CC00F059B3 /* SkinDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SkinDictionary.h; sourceTree = "<group>"; };
@@ -318,11 +314,17 @@
 		152AA1F81A4BED8B00F059B3 /* ConfigManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManage.h; sourceTree = "<group>"; };
 		152AA1F91A4BED8B00F059B3 /* ConfigManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigManage.m; sourceTree = "<group>"; };
 		152AA1FB1A4BEE8000F059B3 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		152AA2051A4C121500F059B3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Basic_Localizable.strings; sourceTree = "<group>"; };
 		152AB8D41A4CFB2100365D67 /* DeviceOrientationListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceOrientationListener.h; sourceTree = "<group>"; };
 		152AB8D51A4CFB2100365D67 /* DeviceOrientationListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceOrientationListener.m; sourceTree = "<group>"; };
 		152AB8D71A4D00F900365D67 /* BaseWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWindow.h; sourceTree = "<group>"; };
 		152AB8D81A4D00F900365D67 /* BaseWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWindow.m; sourceTree = "<group>"; };
+		152AB8DF1A4D51DC00365D67 /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtil.h; sourceTree = "<group>"; };
+		152AB8E21A4D530F00365D67 /* HttpUtilDownLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtilDownLoad.h; sourceTree = "<group>"; };
+		152AB8E31A4D530F00365D67 /* HttpUtilDownLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtilDownLoad.m; sourceTree = "<group>"; };
+		152AB8E51A4D534000365D67 /* HttpUtilRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUtilRequest.h; sourceTree = "<group>"; };
+		152AB8E61A4D534000365D67 /* HttpUtilRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtilRequest.m; sourceTree = "<group>"; };
+		152AB8EB1A4D586A00365D67 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Basic_Localizable.strings; sourceTree = "<group>"; };
+		152AB8EE1A4D59B600365D67 /* device_orientation.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = device_orientation.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -350,6 +352,7 @@
 		152AA0571A4BA15500F059B3 = {
 			isa = PBXGroup;
 			children = (
+				152AB8E81A4D585000365D67 /* Resource */,
 				152AA1FB1A4BEE8000F059B3 /* libsqlite3.dylib */,
 				152AA1F61A4BEB9200F059B3 /* libz.dylib */,
 				152AA1F41A4BEB8700F059B3 /* libxml2.dylib */,
@@ -373,7 +376,6 @@
 		152AA0621A4BA15500F059B3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				152AA1FD1A4C01A700F059B3 /* zh-Hans.lproj */,
 				152AA1F81A4BED8B00F059B3 /* ConfigManage.h */,
 				152AA1F91A4BED8B00F059B3 /* ConfigManage.m */,
 				152AA12B1A4BE70A00F059B3 /* Common.h */,
@@ -523,11 +525,11 @@
 		152AA0C71A4BE5CC00F059B3 /* YCTools */ = {
 			isa = PBXGroup;
 			children = (
+				152AB8DA1A4D51DC00365D67 /* HttpUtil */,
 				152AB8D31A4CFB0800365D67 /* DeviceOrientationListener */,
 				152AA0C81A4BE5CC00F059B3 /* EntityManager */,
 				152AA0CF1A4BE5CC00F059B3 /* Graphics */,
 				152AA0D61A4BE5CC00F059B3 /* KVO+KVC */,
-				152AA0DB1A4BE5CC00F059B3 /* NetWork */,
 				152AA0E11A4BE5CC00F059B3 /* ReachabilityListener */,
 				152AA0E41A4BE5CC00F059B3 /* Skin */,
 				152AA0E71A4BE5CC00F059B3 /* SynOperate */,
@@ -568,18 +570,6 @@
 				152AA0D81A4BE5CC00F059B3 /* ObserverListner.m */,
 			);
 			path = "KVO+KVC";
-			sourceTree = "<group>";
-		};
-		152AA0DB1A4BE5CC00F059B3 /* NetWork */ = {
-			isa = PBXGroup;
-			children = (
-				152AA0DC1A4BE5CC00F059B3 /* NetWork.h */,
-				152AA0DD1A4BE5CC00F059B3 /* NetWorkDownLoad.h */,
-				152AA0DE1A4BE5CC00F059B3 /* NetWorkDownLoad.m */,
-				152AA0DF1A4BE5CC00F059B3 /* NetWorkHTTP.h */,
-				152AA0E01A4BE5CC00F059B3 /* NetWorkHTTP.m */,
-			);
-			path = NetWork;
 			sourceTree = "<group>";
 		};
 		152AA0E11A4BE5CC00F059B3 /* ReachabilityListener */ = {
@@ -818,14 +808,6 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
-		152AA1FD1A4C01A700F059B3 /* zh-Hans.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				152AA2041A4C121500F059B3 /* Basic_Localizable.strings */,
-			);
-			path = "zh-Hans.lproj";
-			sourceTree = "<group>";
-		};
 		152AB8D31A4CFB0800365D67 /* DeviceOrientationListener */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,6 +815,43 @@
 				152AB8D51A4CFB2100365D67 /* DeviceOrientationListener.m */,
 			);
 			path = DeviceOrientationListener;
+			sourceTree = "<group>";
+		};
+		152AB8DA1A4D51DC00365D67 /* HttpUtil */ = {
+			isa = PBXGroup;
+			children = (
+				152AB8E51A4D534000365D67 /* HttpUtilRequest.h */,
+				152AB8E61A4D534000365D67 /* HttpUtilRequest.m */,
+				152AB8E21A4D530F00365D67 /* HttpUtilDownLoad.h */,
+				152AB8E31A4D530F00365D67 /* HttpUtilDownLoad.m */,
+				152AB8DF1A4D51DC00365D67 /* HttpUtil.h */,
+			);
+			path = HttpUtil;
+			sourceTree = "<group>";
+		};
+		152AB8E81A4D585000365D67 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				152AB8ED1A4D59B600365D67 /* shortSound */,
+				152AB8E91A4D586A00365D67 /* zh-Hans.lproj */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		152AB8E91A4D586A00365D67 /* zh-Hans.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				152AB8EA1A4D586A00365D67 /* Basic_Localizable.strings */,
+			);
+			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
+		152AB8ED1A4D59B600365D67 /* shortSound */ = {
+			isa = PBXGroup;
+			children = (
+				152AB8EE1A4D59B600365D67 /* device_orientation.wav */,
+			);
+			path = shortSound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -917,7 +936,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				152AA0741A4BA15500F059B3 /* LaunchScreen.xib in Resources */,
-				152AA2061A4C121500F059B3 /* Basic_Localizable.strings in Resources */,
+				152AB8EC1A4D586A00365D67 /* Basic_Localizable.strings in Resources */,
+				152AB8EF1A4D59B600365D67 /* device_orientation.wav in Resources */,
 				152AA0711A4BA15500F059B3 /* Images.xcassets in Resources */,
 				152AA0EE1A4BE5CC00F059B3 /* MJRefresh.bundle in Resources */,
 			);
@@ -942,9 +962,7 @@
 				152AA1C41A4BE95600F059B3 /* FMDatabase.m in Sources */,
 				152AA1E21A4BE95700F059B3 /* win32tc.c in Sources */,
 				152AA1071A4BE5CC00F059B3 /* SkinDictionary.m in Sources */,
-				152AA1051A4BE5CC00F059B3 /* NetWorkHTTP.m in Sources */,
 				152AA0F21A4BE5CC00F059B3 /* MJRefreshHeaderView.m in Sources */,
-				152AA1041A4BE5CC00F059B3 /* NetWorkDownLoad.m in Sources */,
 				152AA0F31A4BE5CC00F059B3 /* UIScrollView+Extension.m in Sources */,
 				152AA1C91A4BE95700F059B3 /* access.c in Sources */,
 				152AA1271A4BE6C700F059B3 /* UIImage+Expand.m in Sources */,
@@ -990,6 +1008,7 @@
 				152AA0F41A4BE5CC00F059B3 /* UIScrollView+MJRefresh.m in Sources */,
 				152AA1CF1A4BE95700F059B3 /* buffio.c in Sources */,
 				152AA1E91A4BE95700F059B3 /* SBJsonWriter.m in Sources */,
+				152AB8E71A4D534000365D67 /* HttpUtilRequest.m in Sources */,
 				152AA1C81A4BE95700F059B3 /* FMResultSet.m in Sources */,
 				152AA1021A4BE5CC00F059B3 /* ObserverListner.m in Sources */,
 				152AA0FA1A4BE5CC00F059B3 /* PopUpMovableDialogView.m in Sources */,
@@ -1021,6 +1040,7 @@
 				152AA0FB1A4BE5CC00F059B3 /* PopUpMovableView.m in Sources */,
 				152AA1221A4BE6C700F059B3 /* NSDate+Expand.m in Sources */,
 				152AA1E51A4BE95700F059B3 /* NSObject+SBJSON.m in Sources */,
+				152AB8E41A4D530F00365D67 /* HttpUtilDownLoad.m in Sources */,
 				152AA1EE1A4BE95700F059B3 /* mztools.c in Sources */,
 				152AA1CE1A4BE95700F059B3 /* attrs.c in Sources */,
 				152AA1291A4BE6C700F059B3 /* UIView+Expand.m in Sources */,
@@ -1059,10 +1079,10 @@
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
-		152AA2041A4C121500F059B3 /* Basic_Localizable.strings */ = {
+		152AB8EA1A4D586A00365D67 /* Basic_Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				152AA2051A4C121500F059B3 /* zh-Hans */,
+				152AB8EB1A4D586A00365D67 /* zh-Hans */,
 			);
 			name = Basic_Localizable.strings;
 			sourceTree = "<group>";
