@@ -17,8 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNavigationBarHidden:NO];
     // Do any additional setup after loading the view.
+}
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 //重写父类方法判断是否可以旋转
 -(BOOL)shouldAutorotate{
@@ -56,6 +59,7 @@
     return [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    [Utils setStatusBarHidden:flagStatusBarHidden];
     UIViewController *vc = [Utils getCurrentController];
     if (vc) {
         return [vc didRotateFromInterfaceOrientation:fromInterfaceOrientation];

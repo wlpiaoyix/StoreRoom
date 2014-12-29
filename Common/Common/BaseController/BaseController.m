@@ -8,6 +8,7 @@
 
 #import "BaseController.h"
 #import "DeviceOrientationListener.h"
+#import "SkinDictionary.h"
 static UIDeviceOrientation STATIC_deviceOrientation;
 static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
 @interface BaseController ()
@@ -19,8 +20,7 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.deviceOrientation = UIDeviceOrientationUnknown;
-    if([systemVersion floatValue]>=7.0f)
-    {
+    if([systemVersion floatValue]>=7.0f){
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.extendedLayoutIncludesOpaqueBars = NO;
         self.modalPresentationCapturesStatusBarAppearance = NO;
@@ -32,7 +32,18 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
     if(self.navigationController.navigationBar.hidden==NO){
         self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0.118 green:0.580 blue:0.129 alpha:1];
         
+        NSShadow *shadow = [[NSShadow alloc] init];
+        shadow.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+        shadow.shadowOffset = CGSizeMake(0.5, 0.5);
+        NSDictionary *navTitleArr = @{
+                        NSFontAttributeName:[UIFont systemFontOfSize:20],
+                        NSForegroundColorAttributeName:[UIColor whiteColor],
+                        NSShadowAttributeName:shadow,
+                        };
+        [self.navigationController.navigationBar setTitleTextAttributes:navTitleArr];
     }
+    [self.navigationController setNavigationBarHidden:NO];
+    [Utils setStatusBarHidden:NO];
     if (self==[Utils getCurrentController]) {
         int val = _deviceOrientation;
         if (_toInterfaceOrientation!=UIInterfaceOrientationUnknown) {
@@ -42,6 +53,34 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
         STATIC_supportInterfaceOrientation = _supportInterfaceOrientation;
         [DeviceOrientationListener attemptRotationToDeviceOrientation:val];
     }
+}
+
+
+-(void) setRightButtonName:(NSString*) name action:(SEL) action{
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor whiteColor];
+    shadow.shadowOffset = CGSizeMake(0, 0);
+    NSDictionary *navTitleArr = @{
+                    NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
+                    NSForegroundColorAttributeName:[UIColor whiteColor],
+                    NSShadowAttributeName:shadow,
+                    };
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:name style:UIBarButtonItemStyleDone target:self action:action];
+    [rightBarButtonItem setTitleTextAttributes:navTitleArr forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+}
+-(void) setLeftButtonName:(NSString*) name  action:(SEL) action{
+    NSShadow *shadow = [[NSShadow alloc] init];
+    shadow.shadowColor = [UIColor whiteColor];
+    shadow.shadowOffset = CGSizeMake(0, 0);
+    NSDictionary *navTitleArr = @{
+                                  NSFontAttributeName:[UIFont boldSystemFontOfSize:16],
+                                  NSForegroundColorAttributeName:[UIColor whiteColor],
+                                  NSShadowAttributeName:shadow,
+                                  };
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:name style:UIBarButtonItemStyleDone target:self action:action];
+    [leftBarButtonItem setTitleTextAttributes:navTitleArr forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem;
 }
 
 
@@ -193,9 +232,9 @@ static UIInterfaceOrientationMask STATIC_supportInterfaceOrientation;
     return UIStatusBarStyleLightContent;
 }
 - (BOOL)prefersStatusBarHidden {
-    BOOL flag = NO;
-    [Utils setStatusBarHidden:flag];
-    return  flag;
+    BOOL statusBarHidden = NO;
+    [Utils setStatusBarHidden:statusBarHidden];
+    return  statusBarHidden;
 }
 
 - (void)didReceiveMemoryWarning {

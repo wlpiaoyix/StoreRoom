@@ -7,6 +7,8 @@
 //
 
 #import "ReachabilityListener.h"
+#import "Utils.h"
+
 static ReachabilityListener *xReachabilityListener;
 static id synReachabilityListener;
 @interface ReachabilityListener()

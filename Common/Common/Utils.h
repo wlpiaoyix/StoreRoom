@@ -17,6 +17,7 @@ extern const NSString* cachesDir;
 extern const NSString* cachesFileDir;
 extern const NSString* cachesFileImgDir;
 extern const NSString* systemVersion;
+extern bool flagStatusBarHidden;
 
 @interface Utils : NSObject
 //==>
@@ -57,7 +58,7 @@ long timeInterval();
 
 
 //==>交互UI
-+(void) showAlert:(NSString*) message Title:(NSString*) title;
++(void) showAlert:(NSString*) message title:(NSString*) title;
 +(void) showLoading:(NSString*) message;
 +(void) hiddenLoading;
 //<==

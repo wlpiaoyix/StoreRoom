@@ -23,6 +23,7 @@ NSString* cachesDir;
 NSString* cachesFileDir;
 NSString* cachesFileImgDir;
 NSString* systemVersion;
+bool flagStatusBarHidden;
 
 @implementation Utils
 
@@ -66,6 +67,8 @@ long timeInterval(){
         [self fileExistsAtPath:cachesFileImgDir isDirectory:nil isCreated:YES];
         
         [self addSkipBackupAttributeToItemAtURL:documentSkipBackUpFileDir];
+        
+        [DeviceOrientationListener getSingleInstance];
     }
     return true;
 }
@@ -120,7 +123,7 @@ long timeInterval(){
         }
     }
     
-    UIView *rootView = [[topWindow subviews] objectAtIndex:0];
+    UIView *rootView = [topWindow subviews].firstObject;
     if (!rootView) {
         return nil;
     }
@@ -144,8 +147,10 @@ long timeInterval(){
 
 +(UIWindow*) setRootController:(UIViewController*) controller{
     UIWindow *window = [self getWindow];
+    BOOL flag =false;
     if (!window) {
         window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        flag = true;
     }
     UINavigationController *navnext = [[BaseNavigationController alloc]initWithRootViewController:controller];
     CGRect bounds = [UIScreen mainScreen].bounds;
@@ -157,10 +162,38 @@ long timeInterval(){
     return window;
 }
 +(void) setStatusBarHidden:(BOOL) barHidden{
+    flagStatusBarHidden = barHidden;
     if ([[self getWindow].rootViewController isKindOfClass:[UINavigationController class]]) {
-        [[UIApplication sharedApplication] setStatusBarHidden:barHidden];
-        float offy = barHidden?20:0;
-        CGRect r = CGRectMake(0, offy, boundsWidth(), boundsHeight()-offy);
+        [[UIApplication sharedApplication] setStatusBarHidden:flagStatusBarHidden];
+        
+        float offy = flagStatusBarHidden?0:20;
+        CGRect r;
+        switch ([DeviceOrientationListener getSingleInstance].orientation) {
+                // Device oriented vertically, home button on the bottom
+            case UIDeviceOrientationPortrait:{
+                r = CGRectMake(0, offy, boundsWidth(), boundsHeight()-offy);
+            }
+                break;
+                // Device oriented vertically, home button on the top
+            case UIDeviceOrientationPortraitUpsideDown:{
+                r = CGRectMake(0, 0, boundsWidth(), boundsHeight()-offy);
+            }
+                break;
+                // Device oriented horizontally, home button on the right
+            case UIDeviceOrientationLandscapeLeft:{
+                r = CGRectMake(0, 0, boundsWidth()-offy, boundsHeight());
+            }
+                break;
+                // Device oriented horizontally, home button on the left
+            case UIDeviceOrientationLandscapeRight:{
+                r = CGRectMake(offy, 0, boundsWidth()-offy, boundsHeight());
+            }
+                break;
+            default:{
+                r = CGRectMake(0, offy, boundsWidth(), boundsHeight()-offy);
+            }
+                break;
+        }
         ((UINavigationController*)[self getWindow].rootViewController).view.frame = r;
     }
 }
@@ -215,12 +248,16 @@ long timeInterval(){
 //<==
 
 //==>交互UI
-+(void) showAlert:(NSString*) message Title:(NSString*) title{
++(void) showAlert:(NSString*) message title:(NSString*) title{
     PopUpDialogVendorView *alert = [PopUpDialogVendorView alertWithMessage:message title:[NSString isEnabled:title]?title:NSLocalizedStringFromTable(@"popup_default_title", @"Basic_Localizable", nil) onclickBlock:nil buttonNames:NSLocalizedStringFromTable(@"popup_default_confirm_name", @"Basic_Localizable", nil),nil];
     [alert show];
 }
 +(void) showLoading:(NSString*) message{
-    [LoadingView show:message];
+    if (message) {
+        [LoadingView show:message];
+    }else{
+        [LoadingView show:NSLocalizedStringFromTable(@"loading_data_msg", @"Basic_Localizable", nil)];
+    }
 }
 +(void) hiddenLoading{
     [LoadingView hidden];

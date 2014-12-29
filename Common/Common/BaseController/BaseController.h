@@ -49,4 +49,7 @@ typedef void (^CallBackKeyboardEnd)(CGRect keyBoardFrame);
 -(void) backPreviousControllerToSuper:(UIViewController*) superController;
 -(void) goNextController:(UIViewController*) nextController;
 
+-(void) setRightButtonName:(NSString*) name  action:(SEL) action;
+-(void) setLeftButtonName:(NSString*) name  action:(SEL) action;
+
 @end

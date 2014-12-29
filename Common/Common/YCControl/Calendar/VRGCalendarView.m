@@ -8,7 +8,7 @@
 
 #import "VRGCalendarView.h"
 #import <QuartzCore/QuartzCore.h>
-#import "NSDate+convenience.h"
+#import "NSDate+Expand.h"
 #import "NSMutableArray+convenience.h"
 #import "UIView+convenience.h"
 #define COLOR_HEAD_BG [UIColor colorWithRed:0.933 green:0.965 blue:0.910 alpha:1]

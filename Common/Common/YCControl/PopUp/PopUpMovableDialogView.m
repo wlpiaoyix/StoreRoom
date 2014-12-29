@@ -47,12 +47,12 @@ static float STATIC_ALERT_MESSAGE_OFFY;
 +(void) initialize{
     [super initialize];
     UIFont *tempfont = [UIFont systemFontOfSize:1];
-    STATIC_DIALOG_BACKGROUND_COLOR = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    STATIC_DIALOG_BACKGROUND_COLOR = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
     STATIC_DIALOG_BUTTON_HEIGHT=50.0f;
     
     STATIC_DIALOG_BUTTON_NAME_FONT = [UIFont systemFontOfSize:[Utils getFontSizeWithHeight:STATIC_DIALOG_BUTTON_HEIGHT*0.6 fontName:tempfont.fontName]];
     STATIC_DIALOG_BUTTON_BGCOLOR_NORMAL = [UIColor whiteColor];
-    STATIC_DIALOG_BUTTON_BGCOLOR_HIGHLIGHTED = [UIColor colorWithRed:0.271 green:0.463 blue:0.761 alpha:1];
+    STATIC_DIALOG_BUTTON_BGCOLOR_HIGHLIGHTED = [UIColor colorWithRed:0.000 green:0.478 blue:1.000 alpha:1];
     STATIC_DIALOG_BUTTON_TITLECOLOR_NORMAL = STATIC_DIALOG_BUTTON_BGCOLOR_HIGHLIGHTED;
     STATIC_DIALOG_BUTTON_TITLECOLOR_HIGHLIGHTED = STATIC_DIALOG_BUTTON_BGCOLOR_NORMAL;
     STATIC_DIALOG_BORDER_COLOR = [UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:1];

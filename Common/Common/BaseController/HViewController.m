@@ -43,7 +43,7 @@
     [self goNextController:[ViewController new]];
 }
 -(void) onclickx{
-    [Utils showAlert:@"我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀" Title:nil];
+    [Utils showAlert:@"我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀我少我杀" title:nil];
 }
 
 - (void)didReceiveMemoryWarning {

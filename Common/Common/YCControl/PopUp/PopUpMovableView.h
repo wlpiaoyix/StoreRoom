@@ -31,6 +31,8 @@ enum PopUpMovableViewViewAnimation {
 @property (nonatomic) enum PopUpMovableViewViewAnimation animation;
 //现在时的位置
 @property (nonatomic) CGPoint pointShow;
+//用户数据
+@property (nonatomic,strong) NSDictionary *userDic;
 
 -(void) initParam;
 

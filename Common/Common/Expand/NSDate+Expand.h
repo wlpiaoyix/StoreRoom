@@ -18,6 +18,7 @@
 -(int) firstWeekDayInMonth;
 -(int) year;
 -(int) month;
+-(int)weekday;
 -(int) day;
 -(int) hour;
 -(int) minute;

@@ -21,6 +21,12 @@
     NSDateComponents *components = [gregorian components:NSMonthCalendarUnit fromDate:self];
     return (int)[components month];
 }
+-(int)weekday {
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components = [gregorian components:NSWeekdayCalendarUnit fromDate:self];
+    return (int)[components weekday];
+}
 -(int)day {
     NSCalendar *gregorian = [[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar];

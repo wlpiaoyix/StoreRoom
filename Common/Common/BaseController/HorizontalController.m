@@ -27,11 +27,6 @@
 - (UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleDefault;
 }
-- (BOOL)prefersStatusBarHidden {
-    BOOL flag = NO;
-    [Utils setStatusBarHidden:flag];
-    return  flag;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
