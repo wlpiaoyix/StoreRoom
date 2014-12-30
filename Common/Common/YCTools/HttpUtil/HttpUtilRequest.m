@@ -121,6 +121,7 @@
 }
 -(NSMutableURLRequest*) createUrlRequest:(NSDictionary*) params OutTime:(int) outTime{
     NSString *temp = params?[NSString stringWithFormat:@"%@?%@",self.requestString,[[self checkParamsConstructionToNormarl:params] stringByAddingPercentEscapesUsingEncoding:self.encoding]]:self.requestString;
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: temp] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:outTime];
     if (self.httpHeaderFields) {
         [self addAllHttpHeaderFields:self.httpHeaderFields Request:request];

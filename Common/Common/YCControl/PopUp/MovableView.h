@@ -1,5 +1,5 @@
 //
-//  VendorMoveView.h
+//  MovableView.h
 //  ShiShang
 //
 //  Created by wlpiaoyi on 14-11-15.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^CallBackVendorTouchOpt)(CGRect frame);
-@interface VendorMoveView : UIView
+@interface MovableView : UIView
 //是否可以移动，默认是true
 @property (nonatomic) BOOL flagShouldTouchMove;
 

@@ -81,7 +81,7 @@ static UIColor *STATIC_DEFAULT_BACKGROUND_COLOR;
     r.origin = CGPointMake(0, 0);
     self.frame = r;
 }
--(void) setViewShow:(VendorMoveView *)viewShow{
+-(void) setViewShow:(MovableView *)viewShow{
     _sizeShow = viewShow.frameSize;
     _viewShow = viewShow;
 }
@@ -89,7 +89,7 @@ static UIColor *STATIC_DEFAULT_BACKGROUND_COLOR;
     subView.translatesAutoresizingMaskIntoConstraints = YES;
     if (_subContaints) {
         for(NSArray *constraints in _subContaints){
-            [subView addConstraints: constraints];
+            [subView removeConstraints: constraints];
         }
     }
     if (_superContaints) {
@@ -118,7 +118,7 @@ static UIColor *STATIC_DEFAULT_BACKGROUND_COLOR;
 }
 -(void) addSubview:(UIView *)view{
     @synchronized(self){
-        if (![view isKindOfClass:[VendorMoveView class]]) {
+        if (![view isKindOfClass:[MovableView class]]) {
             return;
         }
         for (UIView *subView in self.subviews) {
@@ -141,7 +141,7 @@ static UIColor *STATIC_DEFAULT_BACKGROUND_COLOR;
         self.frame = r;
         [self autoresizingMask_TBLRWH];
         
-        _viewShow = (VendorMoveView*)view;
+        _viewShow = (MovableView*)view;
         r = _viewShow.frame;
         __weak typeof(self) weakself = self;
         [_viewShow setCallBackVendorTouchEnd:^(CGRect frame) {
@@ -186,7 +186,6 @@ static UIColor *STATIC_DEFAULT_BACKGROUND_COLOR;
 }
 
 -(void) show{
-    [[DeviceOrientationListener getSingleInstance] addListener:self];
     if (self.viewSuper==[Utils getWindow]) {
         //保证当前线程执行完成后才执行下一个线程
         dispatch_barrier_async(dispatch_get_main_queue(), ^{
@@ -205,33 +204,37 @@ static UIColor *STATIC_DEFAULT_BACKGROUND_COLOR;
         }
             break;
     }
-    switch ([DeviceOrientationListener getSingleInstance].orientation) {
-            // Device oriented vertically, home button on the bottom
-        case UIDeviceOrientationPortrait:{
-            [self rotateViewExternal:0 animation:NO];
+    if([systemVersion floatValue]<8.0f){
+        [[DeviceOrientationListener getSingleInstance] addListener:self];
+        switch ([DeviceOrientationListener getSingleInstance].orientation) {
+                // Device oriented vertically, home button on the bottom
+            case UIDeviceOrientationPortrait:{
+                [self rotateViewExternal:0 animation:NO];
+            }
+                break;
+                // Device oriented vertically, home button on the top
+            case UIDeviceOrientationPortraitUpsideDown:{
+                [self rotateViewExternal:180 animation:NO];
+            }
+                break;
+                // Device oriented horizontally, home button on the right
+            case UIDeviceOrientationLandscapeLeft:{
+                [self rotateViewExternal:90 animation:NO];
+            }
+                break;
+                // Device oriented horizontally, home button on the left
+            case UIDeviceOrientationLandscapeRight:{
+                [self rotateViewExternal:270 animation:NO];
+            }
+                break;
+            default:{
+            }
+                break;
         }
-            break;
-            // Device oriented vertically, home button on the top
-        case UIDeviceOrientationPortraitUpsideDown:{
-            [self rotateViewExternal:180 animation:NO];
-        }
-            break;
-            // Device oriented horizontally, home button on the right
-        case UIDeviceOrientationLandscapeLeft:{
-            [self rotateViewExternal:90 animation:NO];
-        }
-            break;
-            // Device oriented horizontally, home button on the left
-        case UIDeviceOrientationLandscapeRight:{
-            [self rotateViewExternal:270 animation:NO];
-        }
-            break;
-        default:{
-        }
-            break;
     }
 }
 -(void) close{
+    [[DeviceOrientationListener getSingleInstance] removeListenser:self];
     switch (self.animation) {
         case PopUpMovableViewAnimationSize:{
             [self hiddenAnimationSize];
@@ -339,6 +342,7 @@ static UIColor *STATIC_DEFAULT_BACKGROUND_COLOR;
         [self removeCenterWithSubView:_viewShow superView:self];
         _viewShow.frameOrigin = _pointShow;
     }else{
+        [self removeCenterWithSubView:_viewShow superView:self];
         [self persistCenterWithSubView:_viewShow superView:self];
     }
 }

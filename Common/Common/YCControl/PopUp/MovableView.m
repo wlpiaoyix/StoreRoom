@@ -1,5 +1,5 @@
 //
-//  VendorMoveView.m
+//  MovableView.m
 //  ShiShang
 //
 //  Created by wlpiaoyi on 14-11-15.
@@ -9,18 +9,18 @@
 #import "MovableView.h"
 #import "UIView+Expand.h"
 #import "DeviceOrientationListener.h"
-@interface VendorMoveView(){
+@interface MovableView(){
     CallBackVendorTouchOpt callbackBegin;
     CallBackVendorTouchOpt callbackMove;
     CallBackVendorTouchOpt callbackEnd;
     NSDictionary *dicscrollenabled;
 }
-@property (nonatomic,assign) VendorMoveView *touchView;
+@property (nonatomic,assign) MovableView *touchView;
 @property (nonatomic,assign) UIView *orgView;
 @property (nonatomic) CGPoint offPoint;
 @end
 
-@implementation VendorMoveView
+@implementation MovableView
 -(id) init{
     if (self=[super init]) {
         [self initparams];

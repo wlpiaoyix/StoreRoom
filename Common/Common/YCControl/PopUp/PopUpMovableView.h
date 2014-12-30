@@ -20,7 +20,7 @@ enum PopUpMovableViewViewAnimation {
 
 @interface PopUpMovableView : UIView<DeviceOrientationListenerDelegate>
 //弹出框
-@property (nonatomic,strong,readonly) VendorMoveView *viewShow;
+@property (nonatomic,strong,readonly) MovableView *viewShow;
 //弹出框所属的View
 @property (nonatomic,strong) UIView *viewSuper;
 //是否单击隐藏

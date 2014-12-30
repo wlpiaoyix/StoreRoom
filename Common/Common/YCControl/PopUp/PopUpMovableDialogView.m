@@ -151,7 +151,7 @@ static float STATIC_ALERT_MESSAGE_OFFY;
 
 -(void) setAllView{
     UIView *buttonViews = [self createButtonWithNames:_buttonNames viewWidth:self.dialogContext.frame.size.width];
-    VendorMoveView *viewShow = [self createViewShow];
+    MovableView *viewShow = [self createViewShow];
     
     CGRect r = viewShow.frame;
     r.size.height = buttonViews.frame.size.height+self.dialogContext.frame.size.height;
@@ -174,8 +174,8 @@ static float STATIC_ALERT_MESSAGE_OFFY;
 }
 
 
--(VendorMoveView*) createViewShow{
-    VendorMoveView *viewShow = [[VendorMoveView alloc] init];
+-(MovableView*) createViewShow{
+    MovableView *viewShow = [[MovableView alloc] init];
     viewShow.frame = CGRectMake(0, 0, self.dialogContext.frame.size.width, 0);
     viewShow.autoresizingMask = UIViewAutoresizingNone;
     [viewShow setCornerRadiusAndBorder:5 BorderWidth:0.5 BorderColor:_borderColor];
@@ -270,6 +270,7 @@ static float STATIC_ALERT_MESSAGE_OFFY;
 
 -(void) onclickButton:(UIButton*) button{
     @try {
+        [self close];
         if (blockOnclick) {
             __weak typeof(self) weakself = self;
             NSUInteger index = [_buttons indexOfObject:button];
@@ -277,7 +278,6 @@ static float STATIC_ALERT_MESSAGE_OFFY;
         }
     }
     @finally {
-        [self close];
     }
     
 }
