@@ -109,6 +109,7 @@
 		152AB8E71A4D534000365D67 /* HttpUtilRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 152AB8E61A4D534000365D67 /* HttpUtilRequest.m */; };
 		152AB8EC1A4D586A00365D67 /* Basic_Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152AB8EA1A4D586A00365D67 /* Basic_Localizable.strings */; };
 		152AB8EF1A4D59B600365D67 /* device_orientation.wav in Resources */ = {isa = PBXBuildFile; fileRef = 152AB8EE1A4D59B600365D67 /* device_orientation.wav */; };
+		1585A81E1A53991F004FA37B /* RegexPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1585A81D1A53991F004FA37B /* RegexPredicate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -325,6 +326,8 @@
 		152AB8E61A4D534000365D67 /* HttpUtilRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpUtilRequest.m; sourceTree = "<group>"; };
 		152AB8EB1A4D586A00365D67 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Basic_Localizable.strings; sourceTree = "<group>"; };
 		152AB8EE1A4D59B600365D67 /* device_orientation.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = device_orientation.wav; sourceTree = "<group>"; };
+		1585A81C1A53991F004FA37B /* RegexPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexPredicate.h; sourceTree = "<group>"; };
+		1585A81D1A53991F004FA37B /* RegexPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexPredicate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,6 +528,7 @@
 		152AA0C71A4BE5CC00F059B3 /* YCTools */ = {
 			isa = PBXGroup;
 			children = (
+				1585A81B1A539904004FA37B /* RegexPredicate */,
 				152AB8DA1A4D51DC00365D67 /* HttpUtil */,
 				152AB8D31A4CFB0800365D67 /* DeviceOrientationListener */,
 				152AA0C81A4BE5CC00F059B3 /* EntityManager */,
@@ -854,6 +858,15 @@
 			path = shortSound;
 			sourceTree = "<group>";
 		};
+		1585A81B1A539904004FA37B /* RegexPredicate */ = {
+			isa = PBXGroup;
+			children = (
+				1585A81C1A53991F004FA37B /* RegexPredicate.h */,
+				1585A81D1A53991F004FA37B /* RegexPredicate.m */,
+			);
+			path = RegexPredicate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -962,6 +975,7 @@
 				152AA1C41A4BE95600F059B3 /* FMDatabase.m in Sources */,
 				152AA1E21A4BE95700F059B3 /* win32tc.c in Sources */,
 				152AA1071A4BE5CC00F059B3 /* SkinDictionary.m in Sources */,
+				1585A81E1A53991F004FA37B /* RegexPredicate.m in Sources */,
 				152AA0F21A4BE5CC00F059B3 /* MJRefreshHeaderView.m in Sources */,
 				152AA0F31A4BE5CC00F059B3 /* UIScrollView+Extension.m in Sources */,
 				152AA1C91A4BE95700F059B3 /* access.c in Sources */,

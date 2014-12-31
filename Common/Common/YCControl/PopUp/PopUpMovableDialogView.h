@@ -11,7 +11,7 @@
 
 @class PopUpDialogVendorView;
 
-typedef void (^dispatch_block_dialog_vendor)(PopUpDialogVendorView* dialogView,NSInteger buttonIndex);
+typedef BOOL (^dispatch_block_dialog_vendor)(PopUpDialogVendorView* dialogView,NSInteger buttonIndex);
 
 @interface PopUpDialogVendorView : PopUpMovableView
 @property (nonatomic,strong,readonly) UIView *dialogContext;

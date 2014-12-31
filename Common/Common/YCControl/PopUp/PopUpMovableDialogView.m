@@ -269,15 +269,18 @@ static float STATIC_ALERT_MESSAGE_OFFY;
 }
 
 -(void) onclickButton:(UIButton*) button{
+    BOOL flagClose = true;
     @try {
-        [self close];
         if (blockOnclick) {
             __weak typeof(self) weakself = self;
             NSUInteger index = [_buttons indexOfObject:button];
-            blockOnclick(weakself,index);
+            flagClose = blockOnclick(weakself,index);
         }
     }
     @finally {
+        if (flagClose) {
+            [self close];
+        }
     }
     
 }
